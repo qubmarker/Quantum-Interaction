@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="js/mui.min.js"></script>
+	<!-- <script src="http://www.yihexinda.com/three.js-dev/build/three.js"></script>
+	
+			<script src="http://www.yihexinda.com/three.js-dev/examples/js/Detector.js"></script>
+			<script src="http://www.yihexinda.com/three.js-dev/examples/js/libs/stats.min.js"></script> -->
+    <link href="css/mui.min.css" rel="stylesheet"/>
+	<style>
+		html{
+			text-align: center;
+		}
+		body{
+			background-color: #18181a;
+		}
+		iframe{
+			    /* position: absolute;
+			        left: 10vw;
+			        top: 5vh; */
+					margin-top: 5vh;
+			    }
+			   /* width: 800px;
+			    height: 400px; */
+				overflow: hidden;
+		}
+		#div{
+			width: 100%;
+			height: 100%;
+		}
+	</style>
+	 
+	
+</head>
+<body>
+	<div id="div"></div>
+	<iframe src="" height="620" width="1200" target="_self" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="yes"></iframe>
+	<script src="js/jquery.min.js"></script>
+	<script type="text/javascript" charset="utf-8">
+	  	mui.init();
+		var NAV_IS_PHONE=true;//默认手机端
+		if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
+		   //alert('手机端');
+		   NAV_IS_PHONE=true;
+		   location.href="/pages/login.html"
+		}else{
+		   //alert('PC端')
+		   NAV_IS_PHONE=false;
+		   // location.href="../pc.html"
+		}
+		var url = getQueryString("url");
+		if(url){
+			$("iframe").attr("src",url+"?type=8");
+		}else{
+			$("iframe").attr("src","pages/login.html?type=8");
+		}
+		
+		
+		// $("iframe").css("left",;
+		
+		/* (function () {
+		      function resize() {
+		        var body = document.getElementsByTagName('body')[0];
+		        var html = document.getElementsByTagName('html')[0];
+		        var width = html.clientWidth;
+		        var height =  html.clientHeight;
+		        var max = width > height ? width : height;
+		        var min = width > height ? height : width;
+		        body.style.width = max + "px";
+		        body.style.height = min + "px";
+		      }
+		      resize();
+		      window.addEventListener("resize", resize)
+		    })(); */
+		/* ————————————————
+		版权声明：本文为CSDN博主「Fizz_kai」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+		原文链接：https://blog.csdn.net/u010934423/article/details/78867605 */
+		
+		//mui.openWindow("pages/login.html");
+		function getQueryString(name) {
+			//console.log(name);
+		    var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+		    var r = window.location.search.substr(1).match(reg);
+		    //console.log(r);
+		    if (r != null) {
+		        //转码方式改成 decodeURI
+		        return decodeURI(r[2]);
+		    }
+		    return null;
+		}
+	</script>
+	<!-- <script>
+	
+				if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
+	
+				var container, stats;
+				var camera, scene, renderer, particles, geometry, materials = [], parameters, i, h, color, sprite, size;
+				var mouseX = 0, mouseY = 0;
+	
+				var windowHalfX = window.innerWidth / 2;
+				var windowHalfY = window.innerHeight / 2;
+	
+				init();
+				animate();
+	
+				function init() {
+	
+					container = document.getElementById( 'div' );
+				
+	
+					camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 2000 );
+					camera.position.z = 1000;
+	
+					scene = new THREE.Scene();
+					scene.fog = new THREE.FogExp2( 0x000000, 0.0008 );
+	
+					geometry = new THREE.Geometry();
+	
+					var textureLoader = new THREE.TextureLoader();
+	
+					var sprite1 = textureLoader.load( "images/sprites/snowflake1.png" );
+					var sprite2 = textureLoader.load( "images/sprites/snowflake2.png" );
+					var sprite3 = textureLoader.load( "images/sprites/snowflake3.png" );
+					var sprite4 = textureLoader.load( "images/sprites/snowflake4.png" );
+					var sprite5 = textureLoader.load( "images/sprites/snowflake5.png" );
+	
+					for ( i = 0; i < 10000; i ++ ) {
+	
+						var vertex = new THREE.Vector3();
+						vertex.x = Math.random() * 2000 - 1000;
+						vertex.y = Math.random() * 2000 - 1000;
+						vertex.z = Math.random() * 2000 - 1000;
+	
+						geometry.vertices.push( vertex );
+	
+					}
+	
+					parameters = [
+						[ [1.0, 0.2, 0.5], sprite2, 20 ],
+						[ [0.95, 0.1, 0.5], sprite3, 15 ],
+						[ [0.90, 0.05, 0.5], sprite1, 10 ],
+						[ [0.85, 0, 0.5], sprite5, 8 ],
+						[ [0.80, 0, 0.5], sprite4, 5 ]
+					];
+	
+					for ( i = 0; i < parameters.length; i ++ ) {
+	
+						color  = parameters[i][0];
+						sprite = parameters[i][1];
+						size   = parameters[i][2];
+	
+						materials[i] = new THREE.PointsMaterial( { size: size, map: sprite, blending: THREE.AdditiveBlending, depthTest: false, transparent : true } );
+						materials[i].color.setHSL( color[0], color[1], color[2] );
+	
+						particles = new THREE.Points( geometry, materials[i] );
+	
+						particles.rotation.x = Math.random() * 6;
+						particles.rotation.y = Math.random() * 6;
+						particles.rotation.z = Math.random() * 6;
+	
+						scene.add( particles );
+	
+					}
+	
+					renderer = new THREE.WebGLRenderer();
+					renderer.setPixelRatio( window.devicePixelRatio );
+					renderer.setSize( window.innerWidth, window.innerHeight );
+					container.appendChild( renderer.domElement );
+	
+					/* stats = new Stats();
+					container.appendChild( stats.dom ); */
+	
+					document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+					document.addEventListener( 'touchstart', onDocumentTouchStart, false );
+					document.addEventListener( 'touchmove', onDocumentTouchMove, false );
+	
+					//
+	
+					window.addEventListener( 'resize', onWindowResize, false );
+	
+				}
+	
+				function onWindowResize() {
+	
+					windowHalfX = window.innerWidth / 2;
+					windowHalfY = window.innerHeight / 2;
+	
+					camera.aspect = window.innerWidth / window.innerHeight;
+					camera.updateProjectionMatrix();
+	
+					renderer.setSize( window.innerWidth, window.innerHeight );
+	
+				}
+	
+				function onDocumentMouseMove( event ) {
+	
+					mouseX = event.clientX - windowHalfX;
+					mouseY = event.clientY - windowHalfY;
+	
+				}
+	
+				function onDocumentTouchStart( event ) {
+	
+					if ( event.touches.length === 1 ) {
+	
+						event.preventDefault();
+	
+						mouseX = event.touches[ 0 ].pageX - windowHalfX;
+						mouseY = event.touches[ 0 ].pageY - windowHalfY;
+	
+					}
+	
+				}
+	
+				function onDocumentTouchMove( event ) {
+	
+					if ( event.touches.length === 1 ) {
+	
+						event.preventDefault();
+	
+						mouseX = event.touches[ 0 ].pageX - windowHalfX;
+						mouseY = event.touches[ 0 ].pageY - windowHalfY;
+	
+					}
+	
+				}
+	
+				//
+	
+				function animate() {
+	
+					requestAnimationFrame( animate );
+	
+					render();
+					/* stats.update(); */
+	
+				}
+	
+				function render() {
+	
+					var time = Date.now() * 0.00005;
+	
+					camera.position.x += ( mouseX - camera.position.x ) * 0.05;
+					camera.position.y += ( - mouseY - camera.position.y ) * 0.05;
+	
+					camera.lookAt( scene.position );
+	
+					for ( i = 0; i < scene.children.length; i ++ ) {
+	
+						var object = scene.children[ i ];
+	
+						if ( object instanceof THREE.Points ) {
+	
+							object.rotation.y = time * ( i < 4 ? i + 1 : - ( i + 1 ) );
+	
+						}
+	
+					}
+	
+					for ( i = 0; i < materials.length; i ++ ) {
+	
+						color = parameters[i][0];
+	
+						h = ( 360 * ( color[0] + time ) % 360 ) / 360;
+						materials[i].color.setHSL( h, color[1], color[2] );
+	
+					}
+	
+					renderer.render( scene, camera );
+	
+				}
+	
+	
+			</script> -->
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.css" rel="stylesheet" />
+		<style>
+			.mui-content{
+				/* width: 100%;
+				height: 100%; */
+				background: url(../images/login/loginbg.png) ;
+				
+				filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+				-moz-background-size:100% 100%;
+				background-size:100% 100%;
+				background-repeat:no-repeat;
+			}
+			#title{
+				width: 100%;
+				height: 42.8%;
+				position: absolute;
+				top:20%;
+				z-index: 10;
+			}
+			#gameto{
+				width: 23.24%;
+				height: 13.3%;
+				position: absolute;
+				top:57.47%;
+				left: 38.53%;
+				cursor: pointer;
+				z-index: 10;
+			}
+			#word{
+				position: absolute;
+				bottom: 10%;
+				left: 14%;
+				width: 80%;
+				cursor: pointer;
+				z-index: 10;
+				filter: brightness(2.5);
+				-wibkit-filter: brightness(2.5);
+			}
+			.hengping{
+				transform: rotate(90deg);
+				-o-transform: rotate(90deg);
+				-webkit-transform: rotate(90deg);
+				-moz-transform: rotate(90deg);
+				filter:progid:DXImageTransform.Microsoft.BasicImage(Rotation=2);
+				
+			}
+			/*
+			 2  * 强制横屏显示：通过竖屏时旋转解决横屏问题
+			 3  * 
+			 4  */
+			  @media screen and  (orientation:  portrait){
+			      #wrapper {
+			　　　　　　
+			          -webkit-transform:rotate(90deg);
+			         -webkit-transform-origin:0% 0%;/*1.重置旋转中心*/
+			          
+			         -moz-transform: rotate(90deg);
+			         -moz-transform-origin:0% 0%;
+			         
+			         -ms-transform: rotate(90deg);
+			         -ms-transform-origin:0% 0%;
+			         
+			         transform: rotate(90deg);
+			         transform-origin:0% 0%;
+			         
+			         width: 100vh;/*2.利用 vh 重置 ‘宽度’ */
+			         height: 100vw;/* 3.利用 vw 重置 ‘高度’ */
+			         
+			         top: 0;
+			         left: 100vw;/* 4.旋转后页面超出屏幕，重置页面定位位置 */
+			     }
+			 }
+		</style>
+	</head>
+
+	<body>
+		<div class="mui-content" id="mui-content">
+			<img id="title" src="../images/login/title.png"/>
+			<img id="gameto" src="../images/login/gameto.png"/>
+			<img id="word" src="../images/login/word.png"/>
+		</div>
+		<script src="../js/mui.js"></script>
+				<script src='../particle/js/simplex-noise.min.js'></script>
+				<script src='../particle/js/lvrjwz.js'></script>
+				<script src="../particle/js/index.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			
+			var NAV_IS_PHONE=true;//默认手机端
+			if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
+			   //alert('手机端');
+			   NAV_IS_PHONE=true;
+			}else{
+			   //alert('PC端')
+			   NAV_IS_PHONE=false;
+			  // location.href="../pc.html?url=pages/login.html"
+			}
+			
+			
+			if(window.outerWidth<window.outerHeight){
+				alert("请手机横屏浏览")
+			}
+			window.resizeTo(200,300);
+			onresize();
+			function onresize(){
+				//console.log(window);
+				document.getElementById("mui-content").style.width=window.outerWidth+"px";
+				document.getElementById("mui-content").style.height=window.outerHeight+"px";
+				//document.getElementById("mui-content").style["background-size"].width=window.outerWidth+"px";
+				//document.getElementById("mui-content").style["background-size"].height=window.outerHeight+"px";
+			}
+			document.getElementById("gameto").addEventListener('tap',function(){
+				console.log(NAV_IS_PHONE,getQueryString("type"));
+				if(getQueryString("type")=="8"){
+					mui.openWindow("../pc.html?url=pages/pass.html");
+				}else{
+					mui.openWindow("pass.html");
+				}
+				
+			});
+			window.onresize=function(){
+				onresize();
+			};
+			window.addEventListener('onresize',function(event){
+			  //通过event.detail可获得传递过来的参数内容
+			  onresize();
+			});
+			
+						if(localStorage.isEngish=="true"){
+							var title = document.getElementById("title");
+							title.src = "../images/login/title_en.png";
+							//title.style.width: 100%;
+							title.style.height="100%";
+							title.style.top="-4%";
+							var gameto = document.getElementById("gameto");
+							gameto.src="../images/login/gameto_en.png"
+							gameto.style.height="18.3%";
+							//$("#title").attr("src","../images/login/title_en.png")
+						}else{
+							
+						}
+			
+			//-------------------------
+			setRem();
+			          window.addEventListener("onorientationchange" in window ? "orientationchange":"resize",function(){
+			              setRem();
+			          });
+			        function setRem(){
+			              var html = document.querySelector("html");
+			              var width = html.getBoundingClientRect().width;
+			              var height = html.getBoundingClientRect().height;
+			              //判断横屏
+			             if(width < height){
+			                 //竖屏
+			                 html.style.fontSize = height/16 +"px";
+			             };
+			             if(width > height){
+			                 //横屏
+			                 html.style.fontSize = width/16 +"px";
+			             }
+			             
+			         }
+					 
+					 
+					 function getQueryString(name) {
+					 	//console.log(name);
+					     var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+					     var r = window.location.search.substr(1).match(reg);
+					     //console.log(r);
+					     if (r != null) {
+					         //转码方式改成 decodeURI
+					         return decodeURI(r[2]);
+					     }
+					     return null;
+					 }
+					 
+					 //安卓端退出程序
+					mui.oldback = mui.back;
+					var clickNum = 0;
+					mui.back = function(event){
+					   clickNum++;
+					   if(clickNum > 1){
+					       plus.runtime.quit();
+					   }else{
+					       mui.toast("再按一次退出应用");
+					   }
+					   setTimeout(function(){
+					       clickNum = 0
+					   },1000);
+					        return false;
+					}
+					
+		</script>
+	</body>
+
+</html>

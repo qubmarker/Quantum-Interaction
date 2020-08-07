@@ -1,0 +1,14 @@
+{
+  "name": "quantum",
+  "version": "1.0.0",
+  "dependencies": {
+    "socket.io": "2.3.0",
+    "express": "",
+    "connect-timeout": "",
+    "http-proxy-middleware": "1.0.3",
+    "body-parser": "",
+    "mysql": "",
+    "multer": "",
+    "formidable": ""
+  }
+}

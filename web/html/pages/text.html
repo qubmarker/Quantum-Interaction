@@ -1,0 +1,1114 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../particle/css/style.css">
+		<style>
+			.mui-content{
+				/* width: 100%;
+				height: 100%; */
+				width: 100vw;
+				 height: 100vh;
+				 
+				background: url(../images/game/bg.png) ;
+				
+				filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+				-moz-background-size:100% 100%;
+				background-size:100% 100%;
+				background-repeat:no-repeat;
+				
+			}
+			#pausebtn{
+				
+					width: 6.5%;
+					height: 11.7%;
+					position: absolute;
+					/* top:2.13%; */
+					left: 1.85%;
+					cursor: pointer;
+				z-index: 8;
+			}
+			#progress{
+				width:20%;
+				height:4.7%;
+				border:1px solid rgba(102,228,234,1);
+				opacity:0.8;
+				border-radius:18px;
+				position: absolute;
+				top:3%;
+				left: 7.94%;
+				z-index: 8;
+			}
+			#progressbar{
+				position: absolute;
+				width:0%;
+				height:98%;
+				/* border:1px solid; */
+				border-image:linear-gradient(270deg, rgba(115,240,245,1), rgba(13,26,28,1)) 10 10;
+				background:linear-gradient(90deg,rgba(11,17,18,1) 0%,rgba(105,227,233,1) 100%);
+				border-radius:14px;
+				z-index: 8;
+			}
+			#progress span{
+				    color: #78CBD3;
+				    position: absolute;
+				    line-height: 100%;
+				    right:0.46%;
+					font-family:PingFang SC;
+					font-weight:400;
+					font-size:2vw;
+					text-shadow:0px 3px 16px rgba(26,180,198,0.36);
+					z-index: 8;
+			}
+			#score{
+				position: absolute;
+				left: 41.45%;
+			/* 	width:17.6%;
+				height:6.27%; */
+				z-index: 8;
+			}
+			#scoreImg{
+				width: 52.5%;
+				height: 6.27%;
+				z-index: 8;
+			}
+			#scorediv{
+				    color: #78CBD3;
+				    position: absolute;
+				    top: 19%;
+				    left: 16%;
+					z-index: 8;
+			}
+			#desscore{
+				position: absolute;
+				left: 80%;
+				    top: 3%;
+					z-index: 8;
+			}
+			#desscoreImg{
+				width: 52.5%;
+				height: 6.27%;
+				z-index: 8;
+			}
+			#desscorediv{
+				    color: #78CBD3;
+				    position: absolute;
+				   top: -1%;
+				      left: 13%;
+				    font-size: 1.7vw;
+					z-index: 8;
+			}
+			
+			#gscore{
+				position: absolute;
+				left: 90%;
+				    top: 3%;
+					z-index: 8;
+			}
+			#gscoreImg{
+				width: 100%;
+				height: 6.27%;
+				z-index: 8;
+			}
+			#gscorediv{
+				    color: #78CBD3;
+				    position: absolute;
+				   top: -1%;
+				      left: 13%;
+				    font-size: 1.7vw;
+					z-index: 8;
+			}
+			#borderImg{
+				width: 25%;
+				height: 60%;
+				position: absolute;
+				right: 3.8%;
+				top: 21%;
+				z-index: 8;
+			}
+			.roketImg{
+				width: 9vw;
+				position: absolute;
+				/* border: 1px solid red; */
+				/* transition: left,top 0.8s ease-in 0.3s,color 0.6s ease-out 0.3s; */
+				 z-index: 8;
+			}
+			.quantum{
+				width: 9vw;
+				position: absolute;
+				 transition: left,top 0.8s ease-in 0.3s,color 0.6s ease-out 0.3s;
+				 z-index: 8;
+			}
+			.quantum:before{
+				left:100px;
+				top:100px;
+				z-index: 8;
+			}
+			/**游戏失败**/
+			#gamefail{
+				display: none;
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				left: 0;
+				top: 0;
+				background-color: #222222cf;
+				z-index: 9;
+			}
+			#gamefail1{
+				position: absolute;
+				left: 0;
+				top: 9.7vh;
+				width: 100vw;
+				height: 57.1vh;
+			}
+			#gamefail2{
+				position: absolute;
+				left: 25.5vw;
+				top: 47.2vh;
+				width: 49vw;
+				height: 5.65vh;
+			}
+			#gamefail5{
+				position: absolute;
+				    left: 31vw;
+				    top: 47.2vh;
+				    width: 49vw;
+				    height: 5.65vh;
+				    font-size: 2vw;
+				color:rgba(136,255,255,1);
+			}
+			#gamefail3{
+				position: absolute;
+				left: 30vw;
+				top: 69vh;
+				
+				width: 17.1vw;
+				height: 12vh;
+			}
+			#gamefail4{
+				position: absolute;
+				left: 53.7vw;
+				top: 69vh;
+				width: 17.1vw;
+				height: 12vh;
+			}
+			/**游戏通关**/
+			#gamesus{
+				 display: none; 
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				left: 0;
+				top: 0;
+				background-color: #222222cf;
+				z-index: 9;
+			}
+			#gamesus1{
+				position: absolute;
+				left: 0;
+				top: 9.7vh;
+				width: 100vw;
+				height: 57.1vh;
+			}
+			#gamesus2{
+				position: absolute;
+				left: 25.5vw;
+				top: 47.2vh;
+				width: 49vw;
+				height: 5.65vh;
+			}
+			#gamesus3{
+				position: absolute;
+				left: 30vw;
+				top: 69vh;
+				width: 17.1vw;
+				height: 12vh;
+			}
+			#gamesus4{
+				position: absolute;
+				left: 53.7vw;
+				top: 69vh;
+				width: 17.1vw;
+				height: 12vh;
+			}
+			/**游戏暂停**/
+			#gamepause{
+				display: none;
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				left: 0;
+				top: 0;
+				background-color: #222222cf;
+				z-index: 9;
+			}
+			#gamepause1{
+				position: absolute;
+				left: 0;
+				top: 20vh;
+				width: 100vw;
+				height: 54vh;
+			}
+			#gamepause2{
+				position: absolute;
+				left: 18.4vw;
+				top: 48.1vh;
+				width: 17.1vw;
+				height: 12vh;
+			}
+			#gamepause3{
+				position: absolute;
+				left: 42vw;
+				top: 48.1vh;
+				width: 17.1vw;
+				height: 12vh;
+			}
+			#gamepause4{
+				position: absolute;
+				left: 65.4vw;
+				top: 48.1vh;
+				width: 17.1vw;
+				height: 12vh;
+			}
+			/*****/
+			#teachMask{
+				display: none;
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				left: 0;
+				top: 0;
+				background-color: #222222ab;
+				z-index: 9;
+			}
+			#next{
+				position: absolute;
+				left: 6vw;
+				top: 53vh;
+			}
+			#next img{
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 18vw;
+				height: 11vh;
+			}
+			#nextBtn{
+				width: 18vw;
+				    height: 11vh;
+				    font-size: 2.5vw;
+				    line-height: 11vh;
+				    text-align: center;
+				    font-family: Heiti SC;
+				    font-weight: 800;
+				    color: rgba(189,248,255,1);
+				    text-shadow: 0px 3px 16px rgba(26,180,198,0.36);
+				    background: linear-gradient(0deg,rgba(36,158,173,0.8) 0%, rgba(58,86,96,0.8) 100%);
+				    -webkit-background-clip: text;
+				    -webkit-text-fill-color: transparent;
+			}
+			#tips{
+				    position: absolute;
+				    left: 3.1vw;
+				    top: 36vh;
+				    width: 36.2vw;
+				    height: 7.2vh;
+				    font-size: 2vw;
+				    font-family: PingFang SC;
+				    font-weight: 400;
+				    color: rgba(136,219,230,1);
+			}
+			#finger{
+				display: none;
+				width: 7vw;
+				height: 13.3vh;
+				position: absolute;
+				left: 36vw;
+				top: 56vh;
+			}
+			#fingerup{
+				display: none;
+				width: 7vw;
+				height: 13.3vh;
+				position: absolute;
+				left: 50vw;
+				top: 29vh;
+			}
+			
+			
+			/**公式显示**/
+			#formula{
+				position: absolute;
+				width: 25%;
+				height: 60%;
+				
+				right: 3.8%;
+				top: 28%;
+				text-align: center;
+				z-index: 8;
+				font-size:2.5vw;
+				font-family:PingFang SC;
+				font-weight:400;
+				color:rgba(140,238,250,1);
+			}
+			#formula p{
+				color: #78CBD3;
+				font-size: 1.7vw;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="mui-content" id="mui-content">
+			<img id="pausebtn" src="../images/game/pause.png" />
+			<div id="progress">
+				<div id="progressbar"></div>
+				<span id="progresstxt">0S</span>
+			</div>
+			
+			<div id="score">
+				
+				<img id="scoreImg" src="../images/game/score.png" />
+				<div id="scorediv">得分 0</div>
+			</div>
+			<div id="desscore">
+				
+				<img id="desscoreImg" src="../images/game/desscore@2x.png" />
+				<div id="desscorediv">目标 100</div>
+			</div>
+			<div id="gscore">
+				
+				<img id="gscoreImg" src="../images/game/desscore@2x.png" />
+				<div id="gscorediv">关卡 1</div>
+			</div>
+			<img id="borderImg" src="../images/game/border.png" />
+		<!-- 	<img class="_h quantum" src="../images/game/h.png" />
+			<img class="_x quantum" src="../images/game/x.png" />
+			<img class="_y quantum" src="../images/game/y.png" />
+			<img class="_z quantum" src="../images/game/z.png" /> -->
+			<!-- <svg id="svg" width="100%" height="100%" version="1.1"
+			xmlns="http://www.w3.org/2000/svg" style="z-index: 8;"></svg> -->
+			<div id="teachMask">
+				<div id="tips">两个相同的量子门相乘变成 identity,所以两个相同的门被移动到一起会消除。</div>
+				<div id="next">
+					<img src="../images/game/next.png" />
+					<div id="nextBtn">继 续</div>
+				</div>
+				<img id="finger" src="../images/game/finger.png" />
+				<img id = "fingerup" src="../images/game/fingerup.png" />
+			</div>
+			<div id="formula"></div>
+			<div id="gamepause">
+				<img id="gamepause1" src="../images/gamepause/pause.png" />
+				<img id="gamepause2"  src="../images/gamepause/replay.png" />
+				<img id="gamepause3"  src="../images/gamepause/go.png" />
+				<img  id="gamepause4" src="../images/gamepause/home.png" />
+			</div>
+			<div id="gamesus">
+				<img id="gamesus1" src="../images/gamesus/sus.png" />
+				<img id="gamesus2"  src="../images/gamesus/tips.png" />
+				<img id="gamesus3"  src="../images/gamepause/home.png" />
+				<img  id="gamesus4" src="../images/gamepause/go.png" />
+			</div>
+			<div id="gamefail">
+				<img id="gamefail1" src="../images/gamesus/fail.png" />
+				<img id="gamefail2"  src="../images/gamesus/tips.png" />
+				<div id="gamefail5">很遗憾未能在规定时间完成，再来一次吧～</div>
+				<img id="gamefail3"  src="../images/gamepause/home.png" />
+				<img  id="gamefail4" src="../images/gamepause/replay.png" />
+			</div>
+		</div>
+		<div id="particle" style="display: none;"></div>
+		<script src="../js/mui.js"></script>
+		<script src="../js/jquery.min.js"></script>
+		<script src="../js/TweenLite.min.js"></script>
+<!-- 		<script src='../particle/js/simplex-noise.min.js'></script>
+		<script src='../particle/js/lvrjwz.js'></script>
+		<script src="../particle/js/index.js"></script> -->
+		<script src="../js/lizi.js"></script>
+		<script src="../js/until.js"></script>
+		<script type="text/javascript">
+			var roketList = [];//爆炸效果的
+			var _isStop = false;
+			var stopcount = 0;
+			var options = { 
+				  sound: true, // sound effect
+				  opacity: 0.9, 
+				  width: '100%', 
+				  height: '100%' 
+				  ,pos:[{x:300,y:200}]
+				};
+			mui.init()
+			onresize();
+			function onresize(){
+				//console.log(window);
+			//	document.getElementById("mui-content").style.width=window.outerWidth+"px";
+			//	document.getElementById("mui-content").style.height=window.outerHeight+"px";
+				//document.getElementById("mui-content").style["background-size"].width=window.outerWidth+"px";
+				//document.getElementById("mui-content").style["background-size"].height=window.outerHeight+"px";
+			}
+			
+			window.onresize=function(){
+				onresize();
+			};
+			window.addEventListener('onresize',function(event){
+			  //通过event.detail可获得传递过来的参数内容
+			  onresize();
+			});
+			
+			var currentSquare = null;//当前方块
+			var lastSquare = null;//上一个方块
+			
+			var step=0;//看到那一步了;
+			var nextBtn = document.getElementById("nextBtn");
+			var tips = document.getElementById("tips");
+			var finger = document.getElementById("finger");
+			var fingerup = document.getElementById("fingerup");
+			var teachMask = document.getElementById("teachMask");
+		
+			
+			document.getElementById("next").addEventListener('tap',function(){
+				step++;
+				if(step==1){
+					nextBtn.innerHTML = "下一步";
+					tips.innerHTML = "但是现在没有相同的门，要怎么办呢？";
+				}else if(step==2){
+					nextBtn.innerHTML = "我知道了";
+					tips.innerHTML = "试着把H和任意两个门进行交换～";
+					finger.style.display="inherit";
+					fingerup.style.display="inherit";
+					//启动定时计时器
+					//setProgress();
+				}else if(step==3){
+					teachMask.style.display="none";
+				}else if(step==4){
+					
+				}
+			});
+			//公式-----------------HX    =  ZH
+			var  formulaList = [ [[0,1],[3,0],"HX=ZH"],
+				//XH  =  HZ	
+				[[1,0],[0,3],"XH=HZ"],
+				//HY=-YH
+				[[0,2],[2,0],"HY=-YH"],
+				//XY=-YX
+				[[1,2],[2,1],"XY=-YX"],
+				//XZ=-ZX
+				[[1,3],[3,1],"XZ=-ZX"],
+				//YZ=-ZY
+				[[2,3],[3,2],"YZ=-ZY"]
+				
+			 ];
+			
+			var h_img="../images/game/h.png";
+			var x_img="../images/game/x.png";
+			var y_img="../images/game/y.png";
+			var z_img="../images/game/z.png";
+			var roket_img = "../images/game/roket.gif";
+			var imgList=[h_img,x_img,y_img,z_img];
+			// h,x,y,z   0,1,2,3
+			var arr=[];
+			var err=[0,1,2,3];
+			var score_game=0;//游戏得分
+			/**howend但不包括结束**/
+			function creatSquare(random,howstart,howend,tempRandom,isline){
+				var templsit=[];
+				var templsitup = [];
+				for(var i=0,m=formulaList.length;i<m;i++){
+					var list = formulaList[i];
+					if(list[0][1] == random){
+						templsit.push([list[1][0],list[1][1]]);
+					}else if(list[1][1] == random){
+						templsit.push([list[0][0],list[0][1]]);
+					}
+					 
+					 
+					if(list[0][0] == random){
+						templsitup.push([list[1][0],list[1][1]]);
+					}else if(list[1][0] == random){
+						templsitup.push([list[0][0],list[0][1]]);
+					}
+					
+				}
+				
+				//var tempRandom = Math.floor(Math.random()*2);
+				console.log(random,tempRandom,"--",templsit,"--",templsitup);
+				var tempRanlist= [];
+				if(tempRandom){
+					tempRanlist= templsit[ Math.floor(Math.random()*(templsit.length))];
+					tempRanlist.push(random); 
+				}
+				else{
+					tempRanlist= templsitup[ Math.floor(Math.random()*(templsitup.length))];
+					tempRanlist.unshift(random);
+				}
+				
+				console.log(tempRanlist);
+				for(var i=howstart;i<howend;i++){
+					//var ran = Math.floor(Math.random()*(4-i));
+					//console.log(ran);
+					
+						var h= document.createElement("img");
+						h.className = "quantum";
+						var _type = h["_type"]=tempRanlist[i];//err[ran];
+						h["_index"] = i;//判断谁先谁后得顺序
+						/* var t = 3-i;
+						if(ran != t){
+							var tmp = err[t];
+							err[t] = err[ran];
+							err[ran] = tmp;
+						}
+						 */
+						
+						if(_type==0){
+							h.src = h_img;
+						}else if(_type==1){
+							h.src = x_img;
+						}else if(_type==2){
+							h.src = y_img;
+						}else if(_type==3){
+							h.src = z_img;
+						}
+						h.style["z-index"]=8;
+						h.style.position = "absolute";
+						h.style.left = "70vw";//30+(i*12)+"vw";//100+"px";
+						h.style.top = "40vh";//100+"px";
+						//创建线条
+						var line =null;
+						if(isline){
+							line= document.createElement('div');
+							line.style.width="11vw";
+							line.style.height="0.4vh";
+							line.style.position = "absolute";
+							line.style.left = "70vw";//30+(i*12)+"vw";//100+"px";
+							line.style.top = "47.4vh";//100+"px";
+							line.style.backgroundColor="#2AC845";
+							line.style["z-index"]=8;
+							document.body.appendChild(line);
+							//h.lineObj = line;
+						}
+						
+						document.body.appendChild(h);
+						if(NAV_IS_PHONE){
+							var isMove = false;
+							var middleSquare = null;//中间态
+							var isStartMove = 0;
+							h.addEventListener('touchstart',function(e){
+								console.log("按下",e.currentTarget["_type"],e);
+								//isMove = false;
+								//currentSquare = e.currentTarget;
+								middleSquare = e.currentTarget;
+								isStartMove=1;
+							});
+							h.addEventListener('touchend',function(e){
+								console.log("弹起",e.currentTarget["_type"],e);
+								if(!isMove){
+									squareclick(e);
+								}
+								
+								
+								isStartMove=0;
+								isMove = false;
+							});
+							h.addEventListener('touchmove',function(e){
+								//if(isStartMove==1){
+									//isStartMove=2;
+									isMove = true;
+									if(isStartMove==3)return;
+									//console.log(e.touches[0].clientX);
+									//返回当前文档上处于指定坐标位置最顶层的Dom元素。
+									var getMyElement=[];
+									//if(isStartMove!=3)
+									getMyElement = document.elementFromPoint ( e.touches[0].clientX , e.touches[0].clientY );
+									if(getMyElement["_type"]==undefined)return;
+									console.log(getMyElement["_type"]);
+									currentSquare = middleSquare;
+									if(middleSquare["_type"]!=getMyElement["_type"]){
+										isStartMove=2;
+									}
+									if(isStartMove==2){
+										isStartMove=3;
+										squareclick({target:getMyElement});
+									}
+									
+									
+								//}
+								
+							}); 
+						}else{
+							h.addEventListener('tap',function(e){
+								//console.log(e);
+								squareclick(e);
+							});
+							/* var isMove = false;
+							var middleSquare = null;//中间态
+							var isStartMove = 0;
+							h.addEventListener('mousedown',function(e){
+								console.log("按下",e.currentTarget["_type"],e);
+								//isMove = false;
+								//currentSquare = e.currentTarget;
+								middleSquare = e.currentTarget;
+								isStartMove=1;
+							});
+							h.addEventListener('mouseup',function(e){
+								console.log("弹起",e.currentTarget["_type"],e);
+								if(!isMove){
+									squareclick(e);
+								}
+								
+								
+								isStartMove=0;
+								isMove = false;
+							});
+							h.addEventListener('mousemove',function(e){
+								//if(isStartMove==1){
+									//isStartMove=2;
+									isMove = true;
+									if(isStartMove==3)return;
+									//console.log(e.touches[0].clientX);
+									//返回当前文档上处于指定坐标位置最顶层的Dom元素。
+									var getMyElement=[];
+									//if(isStartMove!=3)
+									getMyElement = document.elementFromPoint ( e.clientX , e.clientY );
+									if(getMyElement["_type"]==undefined)return;
+									console.log(getMyElement["_type"]);
+									currentSquare = middleSquare;
+									if(middleSquare["_type"]!=getMyElement["_type"]){
+										isStartMove=2;
+									}
+									if(isStartMove==2){
+										isStartMove=3;
+										squareclick({target:getMyElement});
+									}
+									
+									
+								//}
+								
+							}); */
+						}
+						
+						
+						//var line1 = document.createElementNS("http://www.w3.org/2000/svg","line");//document.createElement('line');
+						/* line1.x1 =0 //20+(i*12)+"vw";
+						line1.y1 = 0//"40vh";
+						line1.x2 = 100//30+(i*12)+"vw";
+						line1.y2 = 100//"40vh"; */
+						/* line1.setAttribute("x1",28+(i*12)+"vw");
+						line1.setAttribute("y1","47vh");
+						line1.setAttribute("x2",42+(i*12)+"vw");
+						line1.setAttribute("y2","47vh");
+									
+						line1.style.stroke="rgb(186, 119, 119)";
+						line1.style["stroke-width"]="2"; */
+						//document.getElementById("svg").appendChild(line1);
+						/* $("#svg").append(line1); */
+						if(line)
+						TweenLite.to(line.style, 2, {left:28+(i*11)+"vw",top:"47.4vh",onComplete:function(){
+							//deleteRokets()
+							
+						}});
+						TweenLite.to(h.style, 2, {left:30+(i*12)+"vw",top:"40vh",onComplete:function(){
+							//deleteRokets()
+							isdraw = false;
+						}});
+					
+					arr.push(h);
+				}
+			}
+			
+			/***刚开始游戏随机产生第一个方块**/
+			function startGame(){
+				
+				var  random = Math.floor(Math.random()*4);
+				creatSquare(random,0,3,Math.floor(Math.random()*2),true);
+				
+			}
+			startGame();
+			
+			var _count = 0;
+			var isPause = false;
+			var progressbar = document.getElementById("progressbar");
+			var progresstxt = document.getElementById("progresstxt");
+			function setProgress(){
+				var proIndex = setInterval(function(){
+					if(!isPause){
+						_count+=1;
+						if(_count>30){
+							clearInterval(proIndex);
+							$("#gamefail").show();
+							return null;
+						}
+						progressbar.style.width = _count+"%";
+						progresstxt.innerHTML = _count+"S";
+					}
+					
+				},1000);
+			}
+			
+			//暂停
+			document.getElementById("pausebtn").addEventListener('tap',function(){
+				isPause = !isPause;
+				$("#gamepause").show();
+			})
+			
+			//重玩
+			document.getElementById("gamepause2").addEventListener('tap',function(){
+				
+				window.location.reload();
+			})
+			//继续
+			document.getElementById("gamepause3").addEventListener('tap',function(){
+				
+				isPause=false;
+				$("#gamepause").hide();
+			})
+			//主页
+			document.getElementById("gamepause4").addEventListener('tap',function(){
+				if(getQueryString("type")=="8"){
+					mui.openWindow("../pc.html?url=pages/pass.html");
+				}else
+				mui.openWindow("pass.html");
+			})
+			//通关成功下一关
+			document.getElementById("gamesus4").addEventListener('tap',function(){
+				if(getQueryString("type")=="8"){
+					mui.openWindow("../pc.html?url=pages/gametwo.html");
+				}else
+				mui.openWindow("gametwo.html");
+			})
+			//通关成功回到主页
+			document.getElementById("gamesus3").addEventListener('tap',function(){
+				if(getQueryString("type")=="8"){
+					mui.openWindow("../pc.html?url=pages/pass.html");
+				}else
+				mui.openWindow("pass.html");
+			})
+			//游戏失败
+			document.getElementById("gamefail4").addEventListener('tap',function(){
+				
+				window.location.reload();
+			})
+			//游戏失败回到主页
+			document.getElementById("gamefail3").addEventListener('tap',function(){
+				if(getQueryString("type")=="8"){
+					mui.openWindow("../pc.html?url=pages/pass.html");
+				}else
+				mui.openWindow("pass.html");
+				
+			})
+			/* document.body.addEventListener('touchmove',function(e){
+				console.log(e.target);
+			}) */
+			
+			
+			function squareclick(e){
+				if(currentSquare&&currentSquare!=e.target){
+					if(currentSquare["_type"]==e.target["_type"]){
+						console.log("相同得量子门无法抵消");
+						return;
+					}
+					if(Math.abs(parseInt(currentSquare.style.left)-parseInt(e.target.style.left))!=12){
+						console.log("不相邻的量子门无法抵消");
+						return;
+					}
+					lastSquare = currentSquare;
+					currentSquare = e.target;
+					var lastLeft = parseInt(lastSquare.style.left);//判断先后，判断是否相邻
+					var left = parseInt(currentSquare.style.left);
+					console.log("交换",lastLeft,left);
+					//currentSquare.style.border="2px solid #5f3636";
+					var _t =[];
+					var isCurrent = true;//谁前谁后赋值
+					
+					if(lastLeft<left){
+							_t = [lastSquare["_type"],currentSquare["_type"]];
+							isCurrent = false;
+						}else{
+							_t = [currentSquare["_type"],lastSquare["_type"]];
+							isCurrent = true;
+						}
+						console.log("匹配",_t,formulaList);
+						var isSame = false;//是否匹配上
+						for(var j=0,n=formulaList.length;j<n;j++){
+							var list = formulaList[j];
+							console.log(_t,list[0],list[1]);
+							if(_t[0]==list[0][0]&&_t[1]==list[0][1]){
+								if(isCurrent){
+									currentSquare.src=imgList[list[1][0]];
+									currentSquare["_type"]=list[1][0];
+									lastSquare.src=imgList[list[1][1]];
+									lastSquare["_type"]=list[1][1];
+									
+								}else{
+									lastSquare.src=imgList[list[1][0]];
+									lastSquare["_type"]=list[1][0];
+									currentSquare.src=imgList[list[1][1]];
+									currentSquare["_type"]=list[1][1];
+								}
+								lastSquare.style.border="";
+								currentSquare.style.border="";
+								currentSquare=null;
+								lastSquare=null;
+								isSame = true;
+								if($("#formula").find('p').length>5){
+									$("#formula").find('p').eq(0).remove();
+									$("#formula").append('<p>'+list[2]+'</p>');
+								}else{
+									$("#formula").append('<p>'+list[2]+'</p>');
+								}
+								break;
+								
+							}
+							 
+							 if(_t[0]==list[1][0]&&_t[1]==list[1][1]){
+								 if(isCurrent){
+									 currentSquare.src=imgList[list[0][0]];
+									 currentSquare["_type"]=list[0][0];
+									 lastSquare.src=imgList[list[0][1]];
+									 lastSquare["_type"]=list[0][1];
+								 }else{
+									 lastSquare.src=imgList[list[0][0]];
+									 lastSquare["_type"]=list[0][0];
+									 currentSquare.src=imgList[list[0][1]];
+									 currentSquare["_type"]=list[0][1];
+								 }
+								
+									lastSquare.style.border="";
+									currentSquare.style.border="";
+									currentSquare=null;
+									lastSquare=null;
+									isSame = true;
+									
+									if($("#formula").find('p').length>5){
+										$("#formula").find('p').eq(0).remove();
+										$("#formula").append('<p>'+list[2]+'</p>');
+									}else{
+											$("#formula").append('<p>'+list[2]+'</p>');
+										}
+									
+									break;
+							}
+							
+							
+						}
+					
+						//表示存在交换
+						if(isSame){
+							var lastItem = null;
+							$(".quantum").each(function(index,item){
+								if(!lastItem){
+									lastItem=item;
+								}else{
+									if(lastItem["_type"]==item["_type"]){
+										
+										//document.body.removeChild(lastItem.lineObj);
+										//document.body.removeChild(item.lineObj);
+										//先暂时不删除
+										//------------------20191220--------------------
+										/* document.body.removeChild(lastItem);
+										document.body.removeChild(item); */
+										//---------------------------------------
+										/* $(lastItem).css("left",(parseInt(lastItem.style.left)-6)+"vw");
+										$(lastItem).css("top",(parseInt(lastItem.style.top)-7)+"vh");
+										$(item).css("left",(parseInt(item.style.left)-6)+"vw");
+										$(item).css("top",(parseInt(item.style.top)-7)+"vh"); */
+										/* $(lastItem).css("left","0vw");
+										$(lastItem).css("top","0vh");
+										$(item).css("left","0vw");
+										$(item).css("top","0vh"); */
+										$(lastItem).removeClass("quantum");
+										$(lastItem).addClass("roketImg");
+									//	$(lastItem).attr("src",roket_img);
+										 TweenLite.to(lastItem.style, 1, {top:"-20vh",onComplete:function(){
+											deleteRokets();
+											
+										}}); 
+										$(item).removeClass("quantum");
+										$(item).addClass("roketImg");
+										//$(item).attr("src",roket_img);
+										 TweenLite.to(item.style, 1, {top:"-20vh",onComplete:function(){
+											deleteRokets();
+											
+										}}); 
+										
+										    /* left: 24vw;
+										    top: 33vh; */
+										roketList.push(lastItem,item);
+										//--------------------20191220-------------------
+										_isStop = false;
+										//options.pos.x = $(item).offset().left-30;
+										//options.pos.y = $(item).offset().top+30;
+										options.pos=[{x:$(item).offset().left-30,y:$(item).offset().top+30},
+										{x:$(item).offset().left+30,y:$(item).offset().top+30}];
+										console.log($(item).offset());
+									//	console.log(stopcount,_isStop);
+									/* $('#particle').fireworks({
+										  sound: true, // sound effect
+										  opacity: 0.9, 
+										  x:$(item).offset.top,
+										  y:$(item).offset.left,
+										  width: '100%', 
+										  height: '100%' 
+										}); */
+									$("#particle").show();
+										$("#scorediv").html("得分 "+ (score_game+=10));
+										if(score_game>=100){
+											$("#gamesus").show();
+										}
+										return;
+									}else{
+										lastItem=item;
+									}
+								}
+							});
+							$(".quantum").each(function(index,item){
+									var itemindex=(parseInt(item.style.left)-30)/12;
+									
+									if(itemindex==2){
+										TweenLite.to(item.style, 2, {left:"30vw",onComplete:function(){
+											//deleteRokets();
+											
+										}});
+									}
+									
+									//if(itemindex == 0){
+										
+										creatSquare(item["_type"],1,3,0);
+									//}else if(itemindex == 2){
+									//	creatSquare(item["_type"],0,2);
+									//}
+									
+							});
+						}
+					/* if(!isSame){
+						lastSquare.style.border="";
+						currentSquare.style.border="";
+						currentSquare=null;
+						lastSquare=null;
+					} */
+					//先点右边再点左边
+					/*if( lastSquare["_index"]> currentSquare["_index"]){
+						
+						//HX=ZH  01换成30
+						if(currentSquare["_type"] ==0&&lastSquare["_type"] ==1){
+							currentSquare.src=imgList[3];
+							currentSquare["_type"]=3;
+							var tmp = currentSquare["_index"];
+							currentSquare["_index"]=lastSquare["_index"];
+							lastSquare["_index"] = tmp;
+							lastSquare.src=imgList[0];
+							lastSquare["_type"]=0;
+							
+						//XH=HZ  10换成03
+						}else if(currentSquare["_type"] ==1&&lastSquare["_type"] ==0){
+							currentSquare.src=imgList[0];
+							currentSquare["_type"]=0;
+							var tmp = currentSquare["_index"];
+							currentSquare["_index"]=lastSquare["_index"];
+							lastSquare["_index"] = tmp;
+							lastSquare.src=imgList[3];
+							lastSquare["_type"]=3;
+						
+						//HY=-YH  02换成20
+						}else if(currentSquare["_type"] ==0&&lastSquare["_type"] ==2){
+							currentSquare.src=imgList[2];
+							currentSquare["_type"]=2;
+							var tmp = currentSquare["_index"];
+							currentSquare["_index"]=lastSquare["_index"];
+							lastSquare["_index"] = tmp;
+							lastSquare.src=imgList[0];
+							lastSquare["_type"]=0;
+						
+						//XY=-YX  12换成21
+						}else if(currentSquare["_type"] ==1&&lastSquare["_type"] ==2){
+							currentSquare.src=imgList[2];
+							currentSquare["_type"]=2;
+							var tmp = currentSquare["_index"];
+							currentSquare["_index"]=lastSquare["_index"];
+							lastSquare["_index"] = tmp;
+							lastSquare.src=imgList[1];
+							lastSquare["_type"]=1;
+						
+						//XZ=-ZX  13换成31
+						}else if(currentSquare["_type"] ==1&&lastSquare["_type"] ==3){
+							currentSquare.src=imgList[3];
+							currentSquare["_type"]=3;
+							var tmp = currentSquare["_index"];
+							currentSquare["_index"]=lastSquare["_index"];
+							lastSquare["_index"] = tmp;
+							lastSquare.src=imgList[1];
+							lastSquare["_type"]=1;
+						
+						//YZ=-ZY  23换成32
+						}else if(currentSquare["_type"] ==2&&lastSquare["_type"] ==3){
+							currentSquare.src=imgList[3];
+							currentSquare["_type"]=3;
+							var tmp = currentSquare["_index"];
+							currentSquare["_index"]=lastSquare["_index"];
+							lastSquare["_index"] = tmp;
+							lastSquare.src=imgList[2];
+							lastSquare["_type"]=2;
+						}
+					}*/
+					
+					
+					
+					
+					
+					
+					
+					
+					
+				}else if(currentSquare&&currentSquare==e.target){
+					console.log("点击得同一个");
+					
+					currentSquare.style.border="";
+					currentSquare = null;
+				}else{
+					
+					currentSquare = e.target;
+					currentSquare.style.border="2px solid #5f3636";
+					
+					
+				}
+			}
+			
+			
+			
+			
+			
+			$('#particle').fireworks(options);
+			
+			function deleteRokets(){
+				for(var i=0,m=roketList.length;i<m;i++){
+					document.body.removeChild(roketList[i]);
+				}
+				roketList = [];
+			}
+			function getQueryString(name) {
+				//console.log(name);
+			    var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+			    var r = window.location.search.substr(1).match(reg);
+			    //console.log(r);
+			    if (r != null) {
+			        //转码方式改成 decodeURI
+			        return decodeURI(r[2]);
+			    }
+			    return null;
+			}
+			/* 
+find . "(" -name "*.m" -or -name "*.mm" -or -name "*.c" -or -name "*.h" -or -name "*.xib" -or -name "*.pch" -or -name "*.html" -or -name "*.js" -name "*.java" ")" -print | xargs grep -v "^$"|wc -l
+————————————————
+版权声明：本文为CSDN博主「啦啦小飞侠」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/shenglei121/java/article/details/79805541
+ */
+		</script>
+	</body>
+
+</html>
+

@@ -1,0 +1,2091 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../particle/css/style.css">
+		<link rel="stylesheet" href="../css/animation.css" />
+		<style>
+			.mui-content{
+				/* width: 100%;
+				height: 100%; */
+				width: 100vw;
+				 height: 100vh;
+				 
+				background: url(../images/game/bg.png) ;
+				
+				filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+				-moz-background-size:100% 100%;
+				background-size:100% 100%;
+				background-repeat:no-repeat;
+				
+			}
+			
+			.quantum{
+				width: 6vw;
+				position: absolute;
+				 transition: left,top 0.8s ease-in 0.3s,color 0.6s ease-out 0.3s;
+				 z-index: 8;
+			}
+			.quantum img{
+				width: 6vw;
+				position: absolute;
+			}
+			.quantum:before{
+				left:100px;
+				top:100px;
+				z-index: 8;
+			}
+			
+			/**装载squre**/
+			#square1{
+				position: absolute;
+				left:26vw;
+				top:32vh;
+			}
+			/**装载squre**/
+			#square2{
+				position: absolute;
+				left: 26vw;
+				top:45vh;
+			}
+			/**装载squre**/
+			#square3{
+				position: absolute;
+				left: 26vw;
+				top:58vh;
+			}
+			/**装载squre**/
+			#square4{
+				position: absolute;
+				left: 26vw;
+				top:71vh;
+			}
+			/**装载squre**/
+			#square5{
+				position: absolute;
+				left: 26vw;
+				top:84vh;
+			}
+			/**游戏失败**/
+			#gamefail{
+				display: none;
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				left: 0;
+				top: 0;
+				background-color: #222222cf;
+				z-index: 9;
+			}
+			#gamefail1{
+				position: absolute;
+				left: 0;
+				top: 9.7vh;
+				width: 100vw;
+				height: 57.1vh;
+			}
+			#gamefail2{
+				position: absolute;
+				left: 25.5vw;
+				top: 47.2vh;
+				width: 49vw;
+				height: 5.65vh;
+			}
+			#gamefail5{
+				position: absolute;
+				left: 31vw;
+				top: 47.2vh;
+				width: 49vw;
+				height: 5.65vh;
+				font-size: 2vw;
+				color:rgba(136,255,255,1);
+			}
+			#gamefail3{
+				position: absolute;
+				left: 30vw;
+				top: 69vh;
+				
+				width: 17.1vw;
+				height: 12vh;
+			}
+			#gamefail4{
+				position: absolute;
+				left: 53.7vw;
+				top: 69vh;
+				width: 17.1vw;
+				height: 12vh;
+			}
+			/**游戏通关**/
+			#gamesus{
+				 display: none; 
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				left: 0;
+				top: 0;
+				background-color: #222222cf;
+				z-index: 9;
+			}
+			#gamesus1{
+				position: absolute;
+				left: 0;
+				top: 9.7vh;
+				width: 100vw;
+				height: 57.1vh;
+			}
+			#gamesus2{
+				position: absolute;
+				left: 25.5vw;
+				top: 47.2vh;
+				width: 49vw;
+				height: 5.65vh;
+			}
+			#gamesus3{
+				position: absolute;
+				left: 30vw;
+				top: 69vh;
+				width: 17.1vw;
+				height: 12vh;
+			}
+			#gamesus4{
+				position: absolute;
+				left: 53.7vw;
+				top: 69vh;
+				width: 17.1vw;
+				height: 12vh;
+			}
+			/**游戏暂停**/
+			#gamepause{
+				display: none;
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				left: 0;
+				top: 0;
+				background-color: #222222cf;
+				z-index: 9;
+			}
+			#gamepause1{
+				position: absolute;
+				left: 0;
+				top: 20vh;
+				width: 100vw;
+				height: 54vh;
+			}
+			#gamepause2{
+				position: absolute;
+				left: 18.4vw;
+				top: 48.1vh;
+				width: 17.1vw;
+				height: 12vh;
+			}
+			#gamepause3{
+				position: absolute;
+				left: 42vw;
+				top: 48.1vh;
+				width: 17.1vw;
+				height: 12vh;
+			}
+			#gamepause4{
+				position: absolute;
+				left: 65.4vw;
+				top: 48.1vh;
+				width: 17.1vw;
+				height: 12vh;
+			}
+			/**动效期间得遮罩**/
+			#moveMask{
+				display: none;
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				left: 0;
+				top: 0;
+				/* background-color: #22222229; */
+				z-index: 9;
+			}
+			/*****/
+			#teachMask{
+				display: none;
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				left: 0;
+				top: 0;
+				background-color: #222222ab;
+				z-index: 9;
+			}
+			#next{
+				position: absolute;
+				left: 6vw;
+				top: 53vh;
+			}
+			#next img{
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 18vw;
+				height: 11vh;
+			}
+			#nextBtn{
+				width: 18vw;
+				    height: 11vh;
+				    font-size: 2.5vw;
+				    line-height: 11vh;
+				    text-align: center;
+				    font-family: Heiti SC;
+				    font-weight: 800;
+				    color: rgba(189,248,255,1);
+				    text-shadow: 0px 3px 16px rgba(26,180,198,0.36);
+				    background: linear-gradient(0deg,rgba(36,158,173,0.8) 0%, rgba(58,86,96,0.8) 100%);
+				    -webkit-background-clip: text;
+				    -webkit-text-fill-color: transparent;
+			}
+			#tips{
+				    position: absolute;
+				    left: 3.1vw;
+				    top: 36vh;
+				    width: 36.2vw;
+				    height: 7.2vh;
+				    font-size: 2vw;
+				    font-family: PingFang SC;
+				    font-weight: 400;
+				    color: rgba(136,219,230,1);
+			}
+			#finger{
+				display: none;
+				width: 7vw;
+				height: 13.3vh;
+				position: absolute;
+				left: 36vw;
+				top: 56vh;
+			}
+			#fingerup{
+				display: none;
+				width: 7vw;
+				height: 13.3vh;
+				position: absolute;
+				left: 50vw;
+				top: 29vh;
+			}
+			
+			
+			
+		</style>
+	</head>
+
+	<body>
+		<video id="myVideo" src="../audio/SeaTreasureMatch.mp3" autoplay loop controls ></video>
+		<div class="mui-content" id="mui-content">
+			<img id="pausebtn" src="../images/game/pause.png" />
+			<div id="progress">
+				<div id="progressbar"></div>
+				<span id="progresstxt">100S</span>
+			</div>
+			
+			<div id="score">
+				<div id="scorediv">得分</div>
+				<div id="score_progress">
+					<div id="score_progressbar"></div>
+					<span id="score_progresstxt">0</span>
+				</div>
+				<!-- <img id="scoreImg" src="../images/game/score.png" /> -->
+				
+			</div>
+			<div id="desscore">
+				
+				<img id="desscoreImg" src="../images/game/desscore@2x.png" />
+				<div id="desscorediv">目标 100</div>
+			</div>
+			<div id="gscore">
+				
+				<img id="gscoreImg" src="../images/game/desscore@2x.png" />
+				<div id="gscorediv" level="8">关卡 8</div>
+			</div>
+			<!-- <img id="borderImg" src="../images/game/border.png" /> -->
+		<!-- 	<img class="_h quantum" src="../images/game/h.png" />
+			<img class="_x quantum" src="../images/game/x.png" />
+			<img class="_y quantum" src="../images/game/y.png" />
+			<img class="_z quantum" src="../images/game/z.png" /> -->
+			<!-- <svg id="svg" width="100%" height="100%" version="1.1"
+			xmlns="http://www.w3.org/2000/svg" style="z-index: 8;"></svg> -->
+			<div id="moveMask"></div>
+			<div id="teachMask">
+				<div id="tips">两个相同的量子门相乘变成 identity,所以两个相同的门被移动到一起会消除。</div>
+				<div id="next">
+					<img src="../images/game/next.png" />
+					<div id="nextBtn">继 续</div>
+				</div>
+				<img id="finger" src="../images/game/finger.png" />
+				<img id = "fingerup" src="../images/game/fingerup.png" />
+			</div>
+			<div id="formula"></div>
+			<div id="square1"></div>
+			<div id="square2"></div>
+			<div id="square3"></div>
+			<div id="square4"></div>
+			<div id="square5"></div>
+			<div id="gamepause">
+				<img id="gamepause1" src="../images/gamepause/pause.png" />
+				<img id="gamepause2"  src="../images/gamepause/replay.png" />
+				<img id="gamepause3"  src="../images/gamepause/go.png" />
+				<img  id="gamepause4" src="../images/gamepause/home.png" />
+			</div>
+			<div id="gamesus">
+				<img id="gamesus1" src="../images/gamesus/sus.png" />
+				<img id="gamesus2"  src="../images/gamesus/tips.png" />
+				<img id="gamesus3"  src="../images/gamepause/home.png" />
+				<img  id="gamesus4" src="../images/gamepause/go.png" />
+			</div>
+			<div id="gamefail">
+				<img id="gamefail1" src="../images/gamesus/fail.png" />
+				<img id="gamefail2"  src="../images/gamesus/tips.png" />
+				<div id="gamefail5">很遗憾未能在规定时间完成，再来一次吧～</div>
+				<img id="gamefail3"  src="../images/gamepause/home.png" />
+				<img  id="gamefail4" src="../images/gamepause/replay.png" />
+			</div>
+		</div>
+	<div id="particle" style="display: none;"></div>
+			<script src="../js/mui.js"></script>
+			<script src="../js/jquery.min.js"></script>
+			<script src="../js/layer.js"></script>
+			<script src="../js/path.js"></script>
+			<script src="../js/TweenLite.min.js"></script>
+	<!-- 		<script src='../particle/js/simplex-noise.min.js'></script>
+			<script src='../particle/js/lvrjwz.js'></script>
+			<script src="../particle/js/index.js"></script> -->
+		
+			<script src="../js/lizi.js"></script>
+		<script type="text/javascript">
+			var URL_IMG = "../images/sprites/snowflake7_alpha.png";
+			var roketList = [];//爆炸效果的
+			var _isStop = false;
+			var stopcount = 0,STOP_COUNT=50;
+			var options = { 
+				  sound: true, // sound effect
+				  opacity: 0.9, 
+				  width: '100%', 
+				  height: '100%' 
+				  ,pos:[{x:300,y:200}]
+				};
+			var SPEED_D = 0.4;
+			var SPEED_H = 0.3;
+			mui.init()
+			onresize();
+			function onresize(){
+				//console.log(window);
+			//	document.getElementById("mui-content").style.width=window.outerWidth+"px";
+			//	document.getElementById("mui-content").style.height=window.outerHeight+"px";
+				//document.getElementById("mui-content").style["background-size"].width=window.outerWidth+"px";
+				//document.getElementById("mui-content").style["background-size"].height=window.outerHeight+"px";
+			}
+			
+			window.onresize=function(){
+				onresize();
+			};
+			window.addEventListener('onresize',function(event){
+			  //通过event.detail可获得传递过来的参数内容
+			  onresize();
+			});
+			
+			var currentSquare = null;//当前方块
+			var lastSquare = null;//上一个方块
+			
+			var step=0;//看到那一步了;
+			var nextBtn = document.getElementById("nextBtn");
+			var tips = document.getElementById("tips");
+			var finger = document.getElementById("finger");
+			var fingerup = document.getElementById("fingerup");
+			var teachMask = document.getElementById("teachMask");
+		
+			setProgress();
+			document.getElementById("next").addEventListener('tap',function(){
+				step++;
+				if(step==1){
+					nextBtn.innerHTML = "下一步";
+					tips.innerHTML = "但是现在没有相同的门，要怎么办呢？";
+				}else if(step==2){
+					nextBtn.innerHTML = "我知道了";
+					tips.innerHTML = "试着把H和任意两个门进行交换～";
+					finger.style.display="inherit";
+					fingerup.style.display="inherit";
+					//启动定时计时器
+					setProgress();
+				}else if(step==3){
+					teachMask.style.display="none";
+				}else if(step==4){
+					
+				}
+			});
+			//公式-----------------HX    =  ZH
+			
+			
+			/**howend但不包括结束,这里一次产生三个方块，也就是
+			最多3个，包括已经产生的random本身，random也可以作为已经产生的方块，这个时候截取就要当心
+			那问要产生3个后面再加三个怎么办，好办，先产生1个，再产生3个，产生1个随机且他前面没有产生就从howstart=0开始，
+			产生1个且他前面已经产生了的就从howstart=1开始，当然这说的是tempRandom=0为false时，是在他前辈的右边产生的。
+			startleft只从哪个开始产生的，用来指定left的值
+			endrandom 对应random ,如果存在则是在他们中间产生的
+			**/
+			function creatSquare(random,howstart,howend,tempRandom,startleft,isline,squareParent,endrandom){
+				var templsit=[];
+				var templsitup = [];
+				var tempRanlist= [];
+				/*当howend是3是产生法则*/
+				if(howend<=3){
+					for(var i=0,m=formulaList.length;i<m;i++){
+						var list = formulaList[i];
+						//避免随机产生3以下却在匹配时得到的是4
+						if(random<4 &&(list[0][1]>3||list[0][0]>3))continue;
+						if(random<4 &&(list[1][1]>3||list[1][0]>3))continue;
+						
+						if(list[0][1] == random){
+							//避免产生-1
+							if(list[1][0]==-1||list[1][1]==-1){
+								continue;
+							}
+							if(endrandom>=0&&(list[1][0]==endrandom||list[1][1]==endrandom))continue;
+							templsit.push([list[1][0],list[1][1]]);
+						}else if(list[1][1] == random){
+							//避免产生-1
+							if(list[0][0]==-1||list[0][1]==-1){
+								continue;
+							}
+								if(endrandom>=0&&(list[0][0]==endrandom||list[0][1]==endrandom))continue;
+							templsit.push([list[0][0],list[0][1]]);
+						}
+						 else{
+						 	if(endrandom>=0&&(list[0][0]==endrandom||list[0][1]==endrandom))continue;
+						 	templsit.push([list[0][0],list[0][1]],[list[1][0],list[1][1]]);
+						 }
+						 
+						 
+						if(list[0][0] == random){
+							//避免产生-1
+							if(list[1][0]==-1||list[1][1]==-1){
+								continue;
+							}
+							if(endrandom>=0&&(list[1][0]==endrandom||list[1][1]==endrandom))continue;
+							templsitup.push([list[1][0],list[1][1]]);
+						}else if(list[1][0] == random){
+							//避免产生-1
+							if(list[0][0]==-1||list[0][1]==-1){
+								continue;
+							}
+							if(endrandom>=0&&(list[0][0]==endrandom||list[0][1]==endrandom))continue;
+							templsitup.push([list[0][0],list[0][1]]);
+						}
+						else{
+							if(endrandom>=0&&(list[0][0]==endrandom||list[0][1]==endrandom))continue;
+							templsitup.push([list[0][0],list[0][1]],[list[1][0],list[1][1]]);
+						}
+						
+					}
+				}
+				
+				console.log(random,tempRandom,"--",templsit,"--",templsitup);
+				//if(howend==4)
+				
+				
+				//var tempRandom = Math.floor(Math.random()*2);
+				
+				
+				if(tempRandom){
+					tempRanlist= templsit[ Math.floor(Math.random()*(templsit.length))];
+					
+					
+					//--------------判定HXH=Z-------------
+					if(tempRanlist.length>1){
+						
+						if(tempRanlist[0]==0&&random==0&&tempRanlist[1]==1){
+							console.log("--------------判定HXH=Z-------------");
+							for( var i=0,m=templsit.length;i<m;i++ ){
+								if(templsit[i][0]==0&&templsit[i][1]==1){
+									templsit.splice(i,1);
+									i--;
+									break;
+								}
+								
+							}
+						}
+						
+						tempRanlist= templsit[ Math.floor(Math.random()*(templsit.length))];
+						
+						
+					}
+					
+					//---------------------------
+					
+					
+					
+					
+					tempRanlist.push(random); 
+				}
+				else{
+					if(templsitup.length==0){
+						
+						var r1 ,r2;
+						
+						if(endrandom>=0){
+							r1 = getR(random);
+							r2 = getRf(r1,endrandom);
+							
+						}else{
+							r1 = getR(random);
+							r2 = getR(r1);
+							
+							//判断HXH=Z
+							if(r1==1&&random==0){
+								var hrr=[0,1,2,3];
+								r2 = Math.floor( Math.random()*2 )+2;
+							}
+							
+						}
+						templsitup.push([r1,r2]);
+						
+					}
+					
+					tempRanlist= templsitup[ Math.floor(Math.random()*(templsitup.length))];
+					
+					
+					//--------------判定HXH=Z-------------
+					if(tempRanlist.length>1){
+						
+						if(tempRanlist[0]==1&&random==0&&tempRanlist[1]==0){
+							console.log("--------------判定HXH=Z-------------");
+							for( var i=0,m=templsitup.length;i<m;i++ ){
+								if(templsitup[i][0]==1&&templsitup[i][1]==0){
+									templsitup.splice(i,1);
+									i--;
+									break;
+								}
+								
+							}
+						}
+						if(templsitup.length>0)
+						tempRanlist= templsitup[ Math.floor(Math.random()*(templsitup.length))];
+						
+						
+					}
+					
+					//---------------------------
+					
+					tempRanlist.unshift(random);
+				}
+				
+				
+				console.log(tempRanlist);
+				for(var i=howstart;i<howend;i++){
+					//var ran = Math.floor(Math.random()*(4-i));
+					//console.log(ran);
+					
+						var h= document.createElement("div");
+						$(h).append('<img/>');
+						var img = $(h).find('img')[0];
+						//console.log(img);
+						h.className = "quantum";
+						var _type = h["_type"]=tempRanlist[i];//err[ran];
+						h["_index"] = i;//判断谁先谁后得顺序
+						/* var t = 3-i;
+						if(ran != t){
+							var tmp = err[t];
+							err[t] = err[ran];
+							err[ran] = tmp;
+						}
+						 */
+						
+						if(_type==0){
+							img.src = h_img;
+						}else if(_type==1){
+							img.src = x_img;
+						}else if(_type==2){
+							img.src = y_img;
+						}else if(_type==3){
+							img.src = z_img;
+						}else if(_type==4){
+							img.src = c_img;
+						}
+						h.style["z-index"]=8;
+						h.style.position = "absolute";
+						h.style.left = "55vw";//30+(i*12)+"vw";//100+"px";
+						h.style.top = "0vh";//100+"px";
+						h["parentSquareName"]=squareParent;
+						//创建线条
+						var line =null;
+						if(isline){
+							line= document.createElement('div');
+							line.style.width="11vw";
+							line.style.height="0.4vh";
+							line.style.position = "absolute";
+							line.style.left = "40vw";//30+(i*12)+"vw";//100+"px";
+							line.style.top = "5vh";//100+"px";
+							line.style.backgroundColor="#2AC845";
+							line.style["z-index"]=7;
+							//document.body.appendChild(line);
+							$(squareParent).append(line);
+							//h.lineObj = line;
+						}
+						
+						//document.body.appendChild(h);
+						$(squareParent).append(h);
+						//------------------------------
+						h.style.width="7vw";
+						h.style.height="15vh";
+						if(NAV_IS_PHONE){
+							img.style.top="1.1vh";
+							img.style.left="1vw";
+							$(h).css("background","url("+ bgList[Math.floor(Math.random()*5)] +") no-repeat");
+							$(h).css("background-size","8vw 15vh");
+						}else{
+							img.style.top="4.2vh";
+							img.style.left="2.2vw";
+							img.style.width= "3.5vw";
+							$(h).css("background","url("+ bgList[Math.floor(Math.random()*5)] +") no-repeat");
+							$(h).css("background-size","8vw 18vh");
+						}
+						if(NAV_IS_PAD){
+							img.style.top="2vh";
+						}
+						//------------------------------
+						if(_type==4){
+							// var v = document.createElement('div');
+							// v.className="line"
+							// v.style.width="0.4vw";
+							// v.style.height="5vh";
+							// v.style.position = "absolute";
+							// v.style.left = "4vw";//30+(i*12)+"vw";//100+"px";
+							// v.style.top = "11vh";//100+"px";
+							// v.style.backgroundColor="#2AC845";
+							// v.style["z-index"]=7;
+							var v = creatDownline();
+							$(h).append(v);
+						}
+						
+						if(NAV_IS_PHONE){
+						var isMove = false;
+						var middleSquare = null;//中间态
+						var isStartMove = 0;
+						h.addEventListener('touchstart',function(e){
+							console.log("按下",e.currentTarget["_type"],isMove);
+							//isMove = false;
+							//currentSquare = e.currentTarget;
+							//currentSquare = null;
+							middleSquare = e.currentTarget;
+							isStartMove=1;
+						});
+						h.addEventListener('touchend',function(e){
+							console.log("弹起",e.currentTarget["_type"],isMove);
+							if(!isMove){
+								squareclick(e);
+							}
+							
+							
+							isStartMove=0;
+							isMove = false;
+						});
+						h.addEventListener('touchmove',function(e){
+							//if(isStartMove==1){
+								//isStartMove=2;
+								isMove = true;
+								if(isStartMove==3)return;
+								//console.log(e.touches[0].clientX);
+								//返回当前文档上处于指定坐标位置最顶层的Dom元素。
+								var getMyElement=[];
+								//if(isStartMove!=3)
+								getMyElement = document.elementFromPoint ( e.touches[0].clientX , e.touches[0].clientY );
+								
+								if(!$(getMyElement).parent()||$(getMyElement).parent()<1)return;
+								
+								getMyElement = $(getMyElement).parent()[0];
+								console.log(getMyElement);
+								if(getMyElement["_type"]==undefined)return;
+								//console.log("getMyElement[_type]=",getMyElement["_type"],"middleSquare[_type]=",middleSquare["_type"]);
+								currentSquare = middleSquare;
+								if(
+								middleSquare["_type"]!=getMyElement["_type"]){
+									isStartMove=2;
+								}else{
+									if(((middleSquare["_parent"]||middleSquare["_child"])
+									&&!getMyElement["_parent"]&&!getMyElement["_child"])||((getMyElement["_parent"]||getMyElement["_child"])
+									&&!middleSquare["_parent"]&&!middleSquare["_child"])){
+										isStartMove=2;
+									}
+								}
+								if(isStartMove==2){
+									isStartMove=3;
+									//console.log("是三");
+									squareclick({currentTarget:getMyElement});
+								}
+								
+								
+							//}
+							
+						}); 
+						}else{
+							h.addEventListener('tap',function(e){
+								//console.log(e);
+								squareclick(e);
+							});
+						}
+						//var line1 = document.createElementNS("http://www.w3.org/2000/svg","line");//document.createElement('line');
+						/* line1.x1 =0 //20+(i*12)+"vw";
+						line1.y1 = 0//"40vh";
+						line1.x2 = 100//30+(i*12)+"vw";
+						line1.y2 = 100//"40vh"; */
+						/* line1.setAttribute("x1",28+(i*12)+"vw");
+						line1.setAttribute("y1","47vh");
+						line1.setAttribute("x2",42+(i*12)+"vw");
+						line1.setAttribute("y2","47vh");
+									
+						line1.style.stroke="rgb(186, 119, 119)";
+						line1.style["stroke-width"]="2"; */
+						//document.getElementById("svg").appendChild(line1);
+						/* $("#svg").append(line1); */
+						var top = "7vh"
+						if(!NAV_IS_PHONE){
+							top = "9vh"
+						}
+						if(line)
+						TweenLite.to(line.style, SPEED_D, {left:-2+((i+startleft)*5)+"vw",top:top,onComplete:function(){
+							
+							
+						}});
+						console.log("i=",i,"startleft=",startleft,"((i+startleft)*6)+'vw'=",((i+startleft)*6)+"vw");
+						TweenLite.to(h.style, SPEED_D, {left:((i+startleft)*6)+"vw",top:"0vh",onComplete:function(){
+							
+							if(i==(howend-1)){
+								
+								console.log("i==(howend-1)=",h.style.left,"h['_parent']",h['_parent']);
+								
+								//checkSquare(squareParent);
+								checkSquare("#square1");
+								checkSquare("#square2");
+								checkSquare("#square3");
+								checkSquare("#square4");
+								checkSquare("#square5");
+							}
+							
+							isdraw = false;
+						}});
+					
+					arr.push(h);
+					if(i==(howend-1))return arr;
+				}
+			}
+			
+			// var score_game=0;//游戏得分
+			function checkSquares(squareParent){
+				console.log("进入监测"+squareParent);
+				//---------------------判断HXH=Z--------------------------------
+				checkHXH(squareParent);
+				
+				
+				
+				//-----------------------------------------------------
+					/* var howremove = 0;//有多少个方块被移除了
+					var deleteList = [];
+					var c_i = null;//C坐标
+					removeSquare();
+					function removeSquare(){
+						var lastItem = null;
+						var quantumList = [];
+						
+						$(squareParent+" .quantum").each(function(index,item){
+							quantumList.push(item);
+						});
+						//console.log(quantumList);
+						var isPassC=false;//是否经过C
+						 for(var _i=0,_m=quantumList.length;_i<_m;_i++){
+							var item = quantumList[_i];
+						//	console.log(item);
+							if(!lastItem){
+								lastItem=item;
+							}else{
+								if(lastItem["_type"]!=null&&lastItem["_type"]==item["_type"]&&item["_type"]<4&&lastItem["_type"]<4&&
+								!lastItem["_parent"]
+								&&!lastItem["_child"]&&!item["_child"]&&!item["_parent"]
+								){
+									
+									//document.body.removeChild(lastItem.lineObj);
+									//document.body.removeChild(item.lineObj);
+									deleteList.push(_i-1,_i);
+									lastItem["_type"]=null;
+									item["_type"]=null;
+									//document.body.removeChild(lastItem);
+									//document.body.removeChild(item);
+									$(item).remove();
+									$(lastItem).remove();
+									currentSquare = null;
+									lastSquare = null;
+									$("#scorediv").html("得分 "+ (score_game+=5));
+									if(score_game>=100){
+										$("#gamesus").show();
+									}
+									
+									//return;
+									//_i-2;
+									if(isPassC)
+									howremove+=2;
+									//removeSquare();
+								}else{
+									if(item["_child"]||item["_parent"]){
+										isPassC = true;
+										c_i = _i;
+									}
+									
+									lastItem=item;
+									
+									
+									
+									
+								}
+							}
+						} 
+					}
+					
+					
+					var lass = {"_type":0};
+					console.log(c_i,"deleteList=",deleteList);
+					for(var s=0,d=deleteList.length;s<d;s+=2 ){
+						
+						var v = deleteList[s/2];
+						console.log("111111s=",s,v);
+						if(s<c_i){
+							deleteList[s/2] = -2;
+							var ll = creatSquare(lass["_type"],1,3,0,v-1,false,squareParent)
+							lass = ll[0];
+							for(var k in ll){
+								ll[k]["_isCLeft"]="true";
+							}
+						}
+						
+					}
+					
+					var _lastItem = null;
+					var isdong=false;//方块在C方块左边的不能动在右边的可以动
+					$(squareParent+" .quantum").each(function(index,item){
+						
+						
+						//C在
+						if( isdong ){
+							//console.log("重新向左=",item);
+							//item["isBudong"]="false";
+							if(item["_isCLeft"]=="true"){
+								item["_isCLeft"]="false";
+								
+							}else{
+								TweenLite.to(item.style, 2, {left:((index)*6)+"vw",onComplete:function(){
+									//checkSquare();
+									
+								}}); 
+							}
+							   
+						
+						}else{
+							
+						}
+						
+						if(item["_parent"]||item["_child"]){
+							
+							isdong=true;
+						}
+						
+						
+						if(isdong&&index==$(squareParent+" .quantum").length-1){
+							
+							lass = item["_type"];
+							 for(var s=0,d=deleteList.length;s<d;s+=2 ){
+								var v = deleteList[s/2];
+								if(s>c_i&&deleteList[s/2] != -2)
+								lass = creatSquare(lass,1,2,0,v-2,false,item["parentSquareName"])[0];
+							} 
+						}
+						
+					}); */
+				//--------------------------------------------消除核心代码----------------------------------------------		
+					
+					var deleteList = [];
+					removeSquare();
+					function removeSquare(){
+						
+						var lastItem = null;
+						var quantumList = [];
+						var c_i = null;//C坐标
+						$(squareParent+" .quantum").each(function(index,item){
+							quantumList.push(item);
+						});
+						
+						function quantumsort(a,b){
+							return parseInt(a.style.left)-parseInt(b.style.left)
+						}
+						
+						quantumList.sort(quantumsort);
+						
+						
+						 for(var _i=0,_m=quantumList.length;_i<_m;_i++){
+							 var item = quantumList[_i];
+							 if(!lastItem){
+							 	lastItem=item;
+								if(item["_child"]||item["_parent"]){
+									c_i = parseInt(item.style.left)/6;
+								}
+								console.log("获取c-i值",c_i,item["_child"])
+								if(item["_type"]=="-1"){
+									item["_type"]=null;
+									options.pos=[{x:$(item).offset().left-30,y:$(item).offset().top+30},
+										{x:$(item).offset().left+30,y:$(item).offset().top+30}];
+										_isStop = false;
+										$("#particle").openSound();
+										$("#particle").show();
+									$(item).remove();
+									var s = parseInt(item.style.left)/6;
+									// var leftS = getSquareByLeft(s-1,item["parentSquareName"]);
+									var rightS = getSquareByLeft(s+1,item["parentSquareName"]);
+									// if(leftS&&rightS)
+									// creatSquare(getRf(leftS["_type"],rightS["_type"]),0,1,0,s,false,item["parentSquareName"])
+									// else if(leftS&&!rightS)
+									// creatSquare(getR(leftS["_type"]),0,1,0,s,false,item["parentSquareName"])
+									if(!leftS&&rightS)
+									creatSquare(rightS["_type"],1,2,1,s-1,false,item["parentSquareName"]);
+									//putCandNext();
+								}
+							 }else{
+								 if(lastItem["_type"]!=null&&lastItem["_type"]==item["_type"]&&item["_type"]<4&&lastItem["_type"]<4&&
+								 !lastItem["_parent"]
+								 &&!lastItem["_child"]&&!item["_child"]&&!item["_parent"]
+								 ){
+								 	
+								 	//document.body.removeChild(lastItem.lineObj);
+								 	//document.body.removeChild(item.lineObj);
+									options.pos=[{x:$(item).offset().left-30,y:$(item).offset().top+30},
+										{x:$(item).offset().left+30,y:$(item).offset().top+30}];
+										_isStop = false;
+										$("#particle").openSound();
+										$("#particle").show();
+								 	deleteList.push(parseInt(lastItem.style.left)/6,parseInt(item.style.left)/6);
+									console.log(deleteList);
+									showDisplay(item,lastItem);
+									creatBao($(item).offset().left-15+'px',$(item).offset().top-15+'px');
+									creatBao($(lastItem).offset().left-15+'px',$(lastItem).offset().top-15+'px');
+								 	lastItem["_type"]=null;
+								 	item["_type"]=null;
+								 	//document.body.removeChild(lastItem);
+								 	//document.body.removeChild(item);
+								 	$(item).remove();
+								 	$(lastItem).remove();
+									item = null;
+									lastItem = null;
+									quantumList[_i] = null;
+									quantumList[_i-1] = null;
+								 	currentSquare = null;
+								 	lastSquare = null;
+								 	// $("#scorediv").html("得分 "+ (score_game+=5));
+									defengHandler();
+								 	if(score_game>=100){
+								 		$("#gamesus").show();
+										if(!localStorage.level)localStorage.level=1;
+										
+										localStorage.level = parseInt(localStorage.level)+1;
+								 	}
+								 	
+								 	
+								 }else{
+								 	if(item["_child"]||item["_parent"]){
+								 		c_i = parseInt(item.style.left)/6;
+								 	}
+								 	console.log("获取c-i值",c_i,item["_child"])
+									if(item["_type"]=="-1"){
+										item["_type"]=null;
+										options.pos=[{x:$(item).offset().left-30,y:$(item).offset().top+30},
+											{x:$(item).offset().left+30,y:$(item).offset().top+30}];
+											_isStop = false;
+											$("#particle").openSound();
+											$("#particle").show();
+										$(item).remove();
+										var s = parseInt(item.style.left)/6;
+										var leftS = getSquareByLeft(s-1,item["parentSquareName"]);
+										var rightS = getSquareByLeft(s+1,item["parentSquareName"]);
+										if(leftS&&rightS)
+										creatSquare(getRf(leftS["_type"],rightS["_type"]),0,1,0,s,false,item["parentSquareName"])
+										else if(leftS&&!rightS)
+										creatSquare(getR(leftS["_type"]),0,1,0,s,false,item["parentSquareName"])
+										else if(!leftS&&rightS)
+										creatSquare(rightS["_type"],1,2,1,s,false,item["parentSquareName"]);
+										//putCandNext();
+									}
+									
+								 	lastItem=item;
+								 	
+								 	
+								 	
+								 	
+								 }
+								 
+								 
+							 }
+							 
+						 }
+						 function sortNumber(a,b)
+						 {
+							return a - b;
+						 }
+						 //从小到大排序
+						 deleteList.sort(sortNumber);
+						 
+						 var leftSquare = getSquareByLeft(deleteList[0]-1,squareParent);
+						 var rightSquare = getSquareByLeft(deleteList[deleteList.length-1]+1,squareParent);
+						 console.log("leftSquare=",leftSquare,"rightSquare=",rightSquare,quantumList);
+						 var lastSS = null;
+						var lf =null;
+						 //在消除后生成新的方块
+						 for( var i=0,m=deleteList.length;i<m;i+=2 ){
+							 var s = deleteList[i/2];
+							 if(s<c_i){
+								   if(m<3){
+								   							 if(leftSquare){
+								   									var lef = leftSquare["_type"];
+								   									if(lef==4){
+								   										lef = Math.floor(Math.random()*4);
+								   									}
+								   									if(rightSquare)
+								   							 		creatSquare(lef,1,3,0,s-1,false,leftSquare["parentSquareName"],rightSquare["_type"]);
+								   									else 
+								   									creatSquare(lef,1,3,0,s-1,false,leftSquare["parentSquareName"]);
+								   							 }else{
+								   							 							 //不存在可能在最左边
+								   									 var r = Math.floor(Math.random()*4);
+								   									 if(rightSquare)
+								   									 creatSquare(r,1,3,0,s-1,false,rightSquare["parentSquareName"],rightSquare["_type"]);
+								   									 else creatSquare(r,1,3,0,s-1,false,squareParent);
+								   							 }
+								   }else{
+								   							 if(i==0){
+								   								 if(leftSquare){
+								   										var lef = leftSquare["_type"];
+								   										if(lef==4){
+								   											lef = Math.floor(Math.random()*4);
+								   										}
+								   								 		lastSS = creatSquare(lef,1,3,0,s-1,false,leftSquare["parentSquareName"]);
+								   										lastSS = lastSS[lastSS.length-1];
+								   								 }else{
+								   								 							 //不存在可能在最左边
+								   								 		 var r = Math.floor(Math.random()*4);
+								   								 		lastSS = creatSquare(r,1,3,0,s-1,false,squareParent);
+								   										lastSS = lastSS[lastSS.length-1];
+								   								 }
+								   							 }else{
+								   								 //表示最后一个
+								   								 if(i+1 == m-1){
+								   									 if(rightSquare){
+								   										 lastSS =  creatSquare(lastSS["_type"],1,3,0,s,false,rightSquare["parentSquareName"],rightSquare["_type"]);
+								   									 }else{
+								   										 lastSS =   creatSquare(lastSS["_type"],1,3,0,s,false,squareParent);
+								   									 }
+								   								 }else{
+								   									 lastSS =  creatSquare(lastSS["_type"],1,3,0,s,false,squareParent);
+								   									 lastSS = lastSS[lastSS.length-1];
+								   								 }
+								   								 
+								   							 }
+								   							
+								   							 
+								   }
+							 }else if(s>c_i||c_i==null){
+								 //-------------------------当方块在C右边产生时-----------------------------------
+								  var howremove = 0;//有多少个方块被移除了
+								  var lalist = [];
+								 for(var _i=0,_m=quantumList.length;_i<_m;_i++){
+								 	var item = quantumList[_i];
+										if(!item){
+											//删除已经是null的
+											//quantumList.splice(_i,1);
+											//_i--;
+											howremove++;
+										}else{
+											/* var ld =  parseInt(item.style.left)/6;
+											if(ld>c_i) */
+											lalist.push(item)
+										}
+								 								
+								 								
+								 } 
+								 console.log("--wwwwwwwww--",s,c_i,lalist,howremove);
+								 for(var _i=0,_m=lalist.length;_i<_m;_i++){
+								 	var item = lalist[_i];
+									if(item){
+										var ld =  parseInt(item.style.left)/6;
+										if(ld>c_i)
+										TweenLite.to(item.style, SPEED_D, {left:((_i)*6)+"vw",onComplete:function(){
+											checkSquare("#square1");
+											checkSquare("#square2");
+											checkSquare("#square3");
+											checkSquare("#square4");
+											checkSquare("#square5");
+										}}); 
+									}
+									if(_i==_m-1){
+										if(!lf)
+										lf = [item];
+										//for( var c=0;c<howremove/2;c++ ){
+											if(i/2==0){
+												if(item["_type"]=="4"){
+													lf = creatSquare(Math.floor(Math.random()*4),0,2,0,_i+1,false,item["parentSquareName"]);
+												}else{
+													lf = creatSquare(lf[lf.length-1]["_type"],1,3,0,_i,false,item["parentSquareName"]);
+												}
+												
+											}else{
+												if(item["_type"]=="4"){
+													lf = creatSquare(Math.floor(Math.random()*4),0,2,0,_i+3,false,item["parentSquareName"]);
+												}else{
+													lf = creatSquare(lf[lf.length-1]["_type"],1,3,0,_i+2,false,item["parentSquareName"]);
+												}
+											}
+											
+										//}
+										
+									}
+									
+								 }
+							 }else{
+								 //当改行没有C方块时
+								 
+								 
+							 }
+							 
+							
+						 }
+						// putCandNext();
+						
+					}
+				
+				
+				
+			//------------------------------------------------------------------------------------------	
+			}
+			
+			
+			/***刚开始游戏随机产生第一个方块**/
+			function startGame(){
+				
+				
+				var cc = Math.floor(Math.random()*3);
+				
+				if(cc==0){
+					console.log("-------------在最后生成的C1-----------------");
+					//在最后生成的C1
+					var  random = Math.floor(Math.random()*4);
+					var h = creatSquare(random,0,2,Math.floor(Math.random()*2),0,true,"#square1");
+					var h1 = creatSquare(h[h.length-1]["_type"],1,3,Math.floor(Math.random()*2),1,true,"#square1");
+					var h2 = creatSquare(4,0,2,0,4,true,"#square1");
+					creatSquare(h2[h2.length-1]["_type"],1,3,Math.floor(Math.random()*2),5,true,"#square1");
+				}else if(cc==1){
+					console.log("-------------在第三个生成的C1-----------------");
+					//在第三个生成的C1
+					var  random = Math.floor(Math.random()*4);
+					var h = creatSquare(random,0,2,Math.floor(Math.random()*2),0,true,"#square1");
+					var h1 = creatSquare(4,0,2,Math.floor(Math.random()*2),2,true,"#square1");
+					var h2 = creatSquare(h1[h1.length-1]["_type"],1,3,Math.floor(Math.random()*2),3,true,"#square1");
+					creatSquare(h2[h2.length-1]["_type"],1,3,Math.floor(Math.random()*2),5,true,"#square1");
+				}else if(cc==2){
+					console.log("-------------在第一个生成的C1-----------------");
+					//在第一个生成的C1
+					var  random = Math.floor(Math.random()*4);
+					var h = creatSquare(4,0,2,Math.floor(Math.random()*2),0,true,"#square1");
+					var h1 = creatSquare(h[h.length-1]["_type"],1,3,Math.floor(Math.random()*2),1,true,"#square1");
+					var h2 = creatSquare(h1[h1.length-1]["_type"],1,3,Math.floor(Math.random()*2),3,true,"#square1");
+					creatSquare(h2[h2.length-1]["_type"],1,3,Math.floor(Math.random()*2),5,true,"#square1");
+				}
+				
+				
+				
+				
+				//暂时以X作为例子
+				var  randoms = Math.floor(Math.random()*3)+1;
+				var hd = creatSquare(randoms,0,3,/*Math.floor(Math.random()*2)*/0,0,true,"#square2");
+				var h1d = creatSquare(hd[hd.length-1]["_type"],1,3,Math.floor(Math.random()*2),2,true,"#square2");
+				var h2d = creatSquare(h1d[h1d.length-1]["_type"],1,2,Math.floor(Math.random()*2),4,true,"#square2");
+				creatSquare(h2d[h2d.length-1]["_type"],1,3,Math.floor(Math.random()*2),5,true,"#square2");
+				
+				/* var  random = Math.floor(Math.random()*4);
+				var h = creatSquare(random,0,2,Math.floor(Math.random()*2),0,true,"#square3");
+				var h1 = creatSquare(h[h.length-1]["_type"],1,3,Math.floor(Math.random()*2),1,true,"#square3");
+				creatSquare(4,0,2,0,4,true,"#square3"); */
+				var cc = Math.floor(Math.random()*3);
+				if(cc==0){
+					//在最后生成的C1
+					var  random = Math.floor(Math.random()*4);
+					var h2 = creatSquare(random,0,2,Math.floor(Math.random()*2),0,true,"#square3");
+					var h12 = creatSquare(h2[h2.length-1]["_type"],1,3,Math.floor(Math.random()*2),1,true,"#square3");
+					var h22 = creatSquare(4,0,2,0,4,true,"#square3");
+					if(sqrandom==0)
+						creatSquare(h22[h22.length-1]["_type"],1,3,Math.floor(Math.random()*2),5,true,"#square3");
+					else{
+						creatSquare(4,0,2,0,6,true,"#square3");
+					}
+				}else if(cc==1){
+					//在第三个生成的C1
+					var  random = Math.floor(Math.random()*4);
+					var h2 = creatSquare(random,0,2,Math.floor(Math.random()*2),0,true,"#square3");
+					var h12 = creatSquare(4,0,2,Math.floor(Math.random()*2),2,true,"#square3");
+					var h22 = creatSquare(h12[h12.length-1]["_type"],1,3,Math.floor(Math.random()*2),3,true,"#square3");
+					var sqrandom = Math.floor(Math.random()*2)
+					 if(sqrandom==0)
+						 creatSquare(h22[h22.length-1]["_type"],1,3,Math.floor(Math.random()*2),5,true,"#square3");
+					 else{
+						creatSquare(4,0,2,0,6,true,"#square3");
+					 }
+				}else if(cc==2){
+					//在第一个生成的C1
+					var  random = Math.floor(Math.random()*4);
+					var h2 = creatSquare(4,0,2,Math.floor(Math.random()*2),0,true,"#square3");
+					var h12 = creatSquare(h2[h2.length-1]["_type"],1,3,Math.floor(Math.random()*2),1,true,"#square3");
+					var h22 = creatSquare(h12[h12.length-1]["_type"],1,3,Math.floor(Math.random()*2),3,true,"#square3");
+					if(sqrandom==0)
+						creatSquare(h22[h22.length-1]["_type"],1,3,Math.floor(Math.random()*2),5,true,"#square3");
+					else{
+						creatSquare(4,0,2,0,6,true,"#square3");
+					}
+				}
+				
+				//暂时以X作为例子
+				var  randoms = Math.floor(Math.random()*3)+1;
+				var h3 = creatSquare(randoms,0,3,/*Math.floor(Math.random()*2)*/0,0,true,"#square4");
+				var h13 = creatSquare(h3[h3.length-1]["_type"],1,3,Math.floor(Math.random()*2),2,true,"#square4");
+				var h23 = creatSquare(h13[h13.length-1]["_type"],1,2,Math.floor(Math.random()*2),4,true,"#square4");
+				creatSquare(h23[h23.length-1]["_type"],1,3,Math.floor(Math.random()*2),5,true,"#square4");
+				//暂时以X作为例子
+				var  randoms = Math.floor(Math.random()*3)+1;
+				var h4 = creatSquare(randoms,0,3,/*Math.floor(Math.random()*2)*/0,0,true,"#square5");
+				var h14 = creatSquare(h4[h4.length-1]["_type"],1,3,Math.floor(Math.random()*2),2,true,"#square5");
+				var h24 = creatSquare(h14[h14.length-1]["_type"],1,2,Math.floor(Math.random()*2),4,true,"#square5");
+				creatSquare(h24[h24.length-1]["_type"],1,3,Math.floor(Math.random()*2),5,true,"#square5");
+				
+				
+				putCandNext();
+				
+			}
+			/**当产生C时***/
+			function putCandNext(){
+				$("#square1 .quantum").each(function(index,item){
+					
+					if(item["_type"]==4){
+						var square2 = $("#square2 .quantum").eq(index);//缓动还没完用位置获取下标不合适getSquareByLeft(index,"#square2");
+						if(square2[0]["_type"]==0){
+							//$(square2[0]).remove();
+							//$(item).remove();
+							square2[0]["_type"]=Math.floor(Math.random()*2)+1;
+							$(square2[0]).find('img')[0].src = imgList[square2[0]["_type"]];
+						}
+							square2[0]["_parent"]=item;
+							//$(square2).find("img").css("background-color","red");
+							item["_child"]=square2[0]//$("#square2 .quantum")[index];
+							console.log("================",item,square2[0]);
+						
+							
+						
+						
+						
+					}
+					
+				});
+				$("#square3 .quantum").each(function(index,item){
+					
+					if(item["_type"]==4){
+						var square2 = $("#square4 .quantum").eq(index);//缓动还没完用位置获取下标不合适getSquareByLeft(index,"#square2");
+						if(square2[0]["_type"]==0){
+							//$(square2[0]).remove();
+							//$(item).remove();
+							//var leftSquare = getSquareByLeft(deleteList[0]-1,squareParent);
+							square2[0]["_type"]=Math.floor(Math.random()*2)+1;
+							$(square2[0]).find('img')[0].src = imgList[square2[0]["_type"]];
+						}
+							square2[0]["_parent"]=item;
+							//$(square2).find("img").css("background-color","red");
+							item["_child"]=square2[0]//$("#square2 .quantum")[index];
+							console.log("================",item,square2[0]);
+						
+							
+						
+					}
+					
+				});
+			}
+			
+			
+			// startGame();
+			
+			var _count = 100;
+			var isPause = false;
+			var progressbar = document.getElementById("progressbar");
+			var progresstxt = document.getElementById("progresstxt");
+			function setProgress(){
+				var proIndex = setInterval(function(){
+					if(!isPause){
+						_count-=1;
+						if(_count<0){
+							clearInterval(proIndex);
+							$("#gamefail").show();
+							return null;
+						}
+						progressbar.style.width = _count+"%";
+						progresstxt.innerHTML = _count+"S";
+						//给出提示
+						callYou();
+					}
+					
+				},1000);
+			}
+			
+			//暂停
+			document.getElementById("pausebtn").addEventListener('tap',function(){
+				isPause = !isPause;
+				$("#gamepause").show();
+				
+			})
+			//重玩
+			document.getElementById("gamepause2").addEventListener('tap',function(){
+				
+				window.location.reload();
+			})
+			//继续
+			document.getElementById("gamepause3").addEventListener('tap',function(){
+				
+				isPause=false;
+				$("#gamepause").hide();
+			})
+			//主页
+			document.getElementById("gamepause4").addEventListener('tap',function(){
+				if(getQueryString("type")=="8"){
+					mui.openWindow("../pc.html?url=pages/pass.html");
+				}else
+				mui.openWindow("pass.html");
+			})
+			//通关成功下一关
+			document.getElementById("gamesus4").addEventListener('tap',function(){
+				if(!localStorage.nextLevel)localStorage.nextLevel=8;
+				localStorage.nextLevel = parseInt(localStorage.nextLevel)+1;
+				if(getQueryString("type")=="8"){
+					mui.openWindow("../pc.html?url=pages/pass.html");
+				}else
+				mui.openWindow("gameegiht.html");
+				
+			})
+			//通关成功回到主页
+			document.getElementById("gamesus3").addEventListener('tap',function(){
+				if(getQueryString("type")=="8"){
+					mui.openWindow("../pc.html?url=pages/pass.html");
+				}else
+				mui.openWindow("pass.html");
+			})
+			//游戏失败
+			document.getElementById("gamefail4").addEventListener('tap',function(){
+				
+				window.location.reload();
+			})
+			//游戏失败回到主页
+			document.getElementById("gamefail3").addEventListener('tap',function(){
+				if(getQueryString("type")=="8"){
+					mui.openWindow("../pc.html?url=pages/pass.html");
+				}else
+				mui.openWindow("pass.html");
+			})
+			
+			
+			function  whois(currentSquare,lastSquare,squareParent){
+				var lastLeft = parseInt(lastSquare.style.left);//判断先后，判断是否相邻
+				var left = parseInt(currentSquare.style.left);
+				console.log("交换",lastLeft,left);
+				//currentSquare.style.border="2px solid #5f3636";
+				var _t =[],_t_c=[],_u=[],_u_c=[];
+				var isCurrent = true;//谁前谁后赋值
+				if(!currentSquare["_parent"]&&!currentSquare["_child"]&&!lastSquare["_parent"]&&!lastSquare["_child"]){
+					if(lastLeft<left){
+							_t = [lastSquare["_type"],currentSquare["_type"]];
+							isCurrent = false;
+						}else{
+							_t = [currentSquare["_type"],lastSquare["_type"]];
+							isCurrent = true;
+						}
+						
+				}else{
+					if(currentSquare["_parent"]||currentSquare["_child"]){
+						//_t = [currentSquare["_type"],lastSquare["_type"]];
+						//按目前的双比特门规则把4也就是C一直放到后面
+						_t = [lastSquare["_type"],currentSquare["_type"]];
+						_t_c = [lastSquare,currentSquare];
+						if(currentSquare["_parent"]){
+							var lasts = getSameIndexLast(lastSquare,"last");
+							var cu = currentSquare["_parent"];
+							_u = [lasts["_type"],cu._type];
+							_u_c = [ lasts, cu ];
+							//console.log("_u_c==",_u_c)
+						}else if(currentSquare["_child"]){
+							var lasts = getSameIndexLast(lastSquare,"next");
+							var cu = currentSquare["_child"];
+							_u = [lasts["_type"],cu._type];
+							_u_c = [ lasts, cu ];
+							//console.log("_u_c==",_u_c)
+						}
+						
+						
+						
+						//isCurrent = false;
+					}else if(lastSquare["_parent"]||lastSquare["_child"]){
+						//_t = [lastSquare["_type"],currentSquare["_type"]];
+						//按目前的双比特门规则把4也就是C一直放到后面
+						_t = [currentSquare["_type"],lastSquare["_type"]];
+						_t_c = [currentSquare,lastSquare];
+						if(lastSquare["_parent"]){
+							var lasts = getSameIndexLast(currentSquare,"last");
+							var cu = lastSquare["_parent"];
+							var ttyp = cu._type;
+							console.log(cu._type)
+							//莫名其妙cu["_type"] 会报错,操原来是lasts报错
+							_u = [ lasts["_type"],ttyp];
+							_u_c = [lasts,cu];
+							console.log("_u_c==",_u_c)
+						}else if(lastSquare["_child"]){
+							var lasts = getSameIndexLast(currentSquare,"next");
+							console.log(lasts)
+							var cu = lastSquare["_child"];
+							var ttyp = cu._type;
+							_u = [ lasts["_type"],ttyp ];
+							_u_c = [lasts,cu];
+							console.log("_u_c==",_u,_u_c[0]["_type"],_u_c[1]["_type"])
+						}
+						console.log(_t,_u)
+						
+						
+						//isCurrent = true;
+					}else{
+						
+					}
+					
+				}
+				
+					//console.log("匹配",_t,formulaList);
+					
+						//console.log(_t,list[0],list[1]);
+						//如果是单比特门的消除
+						if(!currentSquare["_parent"]&&!lastSquare["_parent"]&&!currentSquare["_child"]&&!lastSquare["_child"]){
+							var isSame = false;//是否匹配上
+							for(var j=0,n=formulaList.length;j<n;j++){
+								var list = formulaList[j];
+							if(_t[0]==list[0][0]&&_t[1]==list[0][1]){
+								$("#moveMask").show();
+								if(isCurrent){
+									
+									/* if(currentSquare["_parent"]||lastSquare["_parent"]){
+										$(currentSquare).find('img')[0].src=imgList[list[4][0]];
+										currentSquare["_type"]=list[4][0];
+										$(lastSquare).find('img')[0].src=imgList[list[4][1]];
+										lastSquare["_type"]=list[4][1];
+										
+									}else{ */
+										$(currentSquare).find('img')[0].src=imgList[list[1][0]];
+										currentSquare["_type"]=list[1][0];
+										$(lastSquare).find('img')[0].src=imgList[list[1][1]];
+										lastSquare["_type"]=list[1][1];
+									/* } */
+									
+									
+									/**若他的存在父亲，父亲要交换**/
+									
+									
+									/* if(currentSquare["_parent"]){
+										
+										var index = $(lastSquare).index();
+										var p = currentSquare["_parent"];
+										//取得父同一行需要交换的元素
+										var pp = $(p["parentSquareName"]).eq(index);
+										
+									
+										whois(p,pp,p["parentSquareName"]);
+										
+										
+										currentSquare["_parent"]=null;
+									}else if(currentSquare["_child"]){
+										var index = $(lastSquare).index();
+										var p = currentSquare["_child"];
+										var pp = $(p["parentSquareName"]).eq(index);
+										whois(p,pp,p["parentSquareName"]);
+										currentSquare["_child"]=null;
+									}else if(lastSquare["_parent"]){
+										var index = $(currentSquare).index();
+										var p = lastSquare["_parent"];
+										//取得父同一行需要交换的元素
+										var pp = $(p["parentSquareName"]).eq(index);
+										whois(p,pp,p["parentSquareName"]);	
+										lastSquare["_parent"]=null;
+									}else if(lastSquare["_child"]){
+										var index = $(currentSquare).index();
+										var p = lastSquare["_child"];
+										var pp = $(p["parentSquareName"]).eq(index);
+										whois(p,pp,p["parentSquareName"]);
+										lastSquare["_child"]=null;
+									}
+									 */
+								}else{
+									$(lastSquare).find('img')[0].src=imgList[list[1][0]];
+									lastSquare["_type"]=list[1][0];
+									$(currentSquare).find('img')[0].src=imgList[list[1][1]];
+									currentSquare["_type"]=list[1][1];
+								}
+								/* $(lastSquare).find('img')[0].style.border="";
+								$(currentSquare).find('img')[0].style.border="";
+								currentSquare=null;
+								lastSquare=null; */
+								isSame = true;
+								$(currentSquare).find('img')[0].style.border="1px dotted red";
+								$(lastSquare).find('img')[0].style.border="1px dotted green";
+								var lasttemp = parseInt(lastSquare.style.left)+"vw";
+								var tmpleft = parseInt(currentSquare.style.left)+"vw";
+								currentSquare.style.left=parseInt(lastSquare.style.left)+"vw";
+								lastSquare.style.left=parseInt(tmpleft)+"vw";
+								console.log(currentSquare["_type"],lastSquare["_type"],"转换位置前0=",currentSquare.style.left,lastSquare.style.left);
+								TweenLite.to(currentSquare.style, SPEED_H, {left:tmpleft,onComplete:function(){
+									console.log("滑动完毕0")
+									
+								}}); 
+								TweenLite.to(lastSquare.style, SPEED_H, {left:lasttemp,onComplete:function(){
+									console.log("滑动完毕1",lastSquare)
+									$(lastSquare).find('img')[0].style.border="";
+									$(currentSquare).find('img')[0].style.border="";
+									currentSquare=null;
+									lastSquare=null;
+									isSame = true;
+									// var time = setTimeout(function(){
+										
+										checkSquare("#square1");
+										checkSquare("#square2");
+										checkSquare("#square3");
+										checkSquare("#square4");
+										checkSquare("#square5");
+										$("#moveMask").hide();
+										// clearTimeout(time);
+									// },200)
+								}}); 
+								createFormula(list);
+								break;
+								
+							}
+							 
+							 if(_t[0]==list[1][0]&&_t[1]==list[1][1]){
+								 $("#moveMask").show();
+								 if(isCurrent){
+									 $(currentSquare).find('img')[0].src=imgList[list[0][0]];
+									 currentSquare["_type"]=list[0][0];
+									 $(lastSquare).find('img')[0].src=imgList[list[0][1]];
+									 lastSquare["_type"]=list[0][1];
+								 }else{
+									 $(lastSquare).find('img')[0].src=imgList[list[0][0]];
+									 lastSquare["_type"]=list[0][0];
+									 $(currentSquare).find('img')[0].src=imgList[list[0][1]];
+									 currentSquare["_type"]=list[0][1];
+								 }
+								
+									/* $(lastSquare).find('img')[0].style.border="";
+									$(currentSquare).find('img')[0].style.border="";
+									currentSquare=null;
+									lastSquare=null; */
+									
+									isSame = true;
+									$(currentSquare).find('img')[0].style.border="1px dotted red";
+									$(lastSquare).find('img')[0].style.border="1px dotted green";
+									var lasttemp = parseInt(lastSquare.style.left)+"vw";
+									var tmpleft = parseInt(currentSquare.style.left)+"vw";
+									currentSquare.style.left=parseInt(lastSquare.style.left)+"vw";
+									lastSquare.style.left=parseInt(tmpleft)+"vw";
+									console.log(lasttemp,tmpleft,"转换位置前2=",currentSquare.style.left,lastSquare.style.left);
+									TweenLite.to(currentSquare.style, SPEED_H, {left:tmpleft,onComplete:function(){
+										console.log("滑动完毕2")
+										
+									}}); 
+									TweenLite.to(lastSquare.style, SPEED_H, {left:lasttemp,onComplete:function(){
+										console.log("滑动完毕3",lastSquare)
+										$(lastSquare).find('img')[0].style.border="";
+										$(currentSquare).find('img')[0].style.border="";
+										currentSquare=null;
+										lastSquare=null;
+										isSame = true;
+										// var time = setTimeout(function(){
+											
+											checkSquare("#square1");
+											checkSquare("#square2");
+											checkSquare("#square3");
+											checkSquare("#square4");
+											checkSquare("#square5");
+											$("#moveMask").hide();
+											// clearTimeout(time);
+										// },200)
+									}}); 
+									createFormula(list);
+									break;
+							}
+							}
+						}else{
+							//双比特门额消除
+							console.log("双比特门额消除");
+							console.log(_t,_u);
+							var isSame = false;//是否匹配上
+							for(var j=0,n=formulaList.length;j<n;j++){
+								var list = formulaList[j];
+								if( list[0][0]==_t[0]&&list[0][1]==_t[1] &&list[3]&& list[3][0]==_u[0]&&list[3][1]==_u[1]){
+									$("#moveMask").show();
+								_t_c[0]["_type"]=list[1][0];
+								var tmm = $(_t_c[0]).find('img')[0].src;
+								$(_t_c[0]).find('img')[0].src=imgList[list[1][0]]||$(_t_c[1]).find('img')[0].src;
+								_t_c[0]["_child"] =_t_c[0]["_parent"]=null;
+								$(_t_c[0]).find(".line").remove();
+								
+								_t_c[1]["_type"]=list[1][1];
+								$(_t_c[1]).find('img')[0].src=imgList[list[1][1]]||tmm;
+								_t_c[1]["_child"] =_t_c[1]["_parent"]=null;
+								$(_t_c[1]).find(".line").remove();
+								
+								_u_c[0]["_type"]=list[4][0];
+								$(_u_c[0]).find('img')[0].src=imgList[list[4][0]]||$(_u_c[1]).find('img')[0].src;
+								_u_c[0]["_child"] =_u_c[0]["_parent"]=null;
+								$(_u_c[0]).find(".line").remove();
+								
+								_u_c[1]["_type"]=list[4][1];
+								$(_u_c[1]).find('img')[0].src=imgList[list[4][1]]||$(_u_c[0]).find('img')[0].src;
+								_u_c[1]["_child"] =_u_c[1]["_parent"]=null;
+								$(_u_c[1]).find(".line").remove();
+								
+								if(_t_c[0]["_type"]=="4"){
+									$(_t_c[0]).append(creatDownline());
+									_t_c[0]["_child"] = _u_c[0];
+									_u_c[0]["_parent"]=_t_c[0];
+								}else if(_u_c[0]["_type"]=="4"){
+									$(_u_c[0]).append(creatDownline());
+									_u_c[0]["_child"] = _t_c[0];
+									_t_c[0]["_parent"]=_u_c[0];
+								}else if(_t_c[1]["_type"]=="4"){
+									$(_t_c[1]).append(creatDownline());
+									_t_c[1]["_child"] = _u_c[1];
+									_u_c[1]["_parent"]=_t_c[1];
+								}else if(_u_c[1]["_type"]=="4"){
+									$(_u_c[1]).append(creatDownline());
+									_u_c[1]["_child"] = _t_c[1];
+									_t_c[1]["_parent"]=_u_c[1];
+								}
+								/* $(lastSquare).find('img')[0].style.border="";
+								$(currentSquare).find('img')[0].style.border="";
+								currentSquare=null;
+								lastSquare=null;*/
+								isSame = true; 
+								$(_u_c[0]).find('img')[0].style.border="1px dotted red";
+								$(_u_c[1]).find('img')[0].style.border="1px dotted green";
+								var lasttemp1 = parseInt(_u_c[0].style.left)+"vw";
+								var tmpleft1 = parseInt(_u_c[1].style.left)+"vw";
+								_u_c[1].style.left=parseInt(_u_c[0].style.left)+"vw";
+								_u_c[0].style.left=parseInt(tmpleft1)+"vw";
+								TweenLite.to(_u_c[1].style, SPEED_H, {left:tmpleft1,onComplete:function(){
+									console.log("滑动完毕41")
+									
+								}}); 
+								TweenLite.to(_u_c[0].style, SPEED_H, {left:lasttemp1,onComplete:function(){
+									console.log("滑动完毕42")
+									$(_u_c[0]).find('img')[0].style.border="";
+									$(_u_c[1]).find('img')[0].style.border="";
+								}}); 
+								$(currentSquare).find('img')[0].style.border="1px dotted red";
+								$(lastSquare).find('img')[0].style.border="1px dotted green";
+								var lasttemp = parseInt(lastSquare.style.left)+"vw";
+								var tmpleft = parseInt(currentSquare.style.left)+"vw";
+								currentSquare.style.left=parseInt(lastSquare.style.left)+"vw";
+								lastSquare.style.left=parseInt(tmpleft)+"vw";
+								TweenLite.to(currentSquare.style, SPEED_H, {left:tmpleft,onComplete:function(){
+									console.log("滑动完毕4")
+									
+								}}); 
+								TweenLite.to(lastSquare.style, SPEED_H, {left:lasttemp,onComplete:function(){
+									console.log("滑动完毕5",lastSquare)
+									$(lastSquare).find('img')[0].style.border="";
+									$(currentSquare).find('img')[0].style.border="";
+									currentSquare=null;
+									lastSquare=null;
+									isSame = true;
+									// var time = setTimeout(function(){
+										
+										checkSquare("#square1");
+										checkSquare("#square2");
+										checkSquare("#square3");
+										checkSquare("#square4");
+										checkSquare("#square5");
+										$("#moveMask").hide();
+										// clearTimeout(time);
+									// },200)
+								}}); 
+									createFormula(list);
+									break;
+								}else if(list[0][0]==_u[0]&&list[0][1]==_u[1] &&list[3]&& list[3][0]==_t[0]&&list[3][1]==_t[1]){
+									$("#moveMask").show();
+									_u_c[0]["_type"]=list[1][0];
+									$(_u_c[0]).find('img')[0].src=imgList[list[1][0]]||$(_u_c[1]).find('img')[0].src;
+									_u_c[0]["_child"] =_u_c[0]["_parent"]=null;
+									$(_u_c[0]).find(".line").remove();
+									
+									_u_c[1]["_type"]=list[1][1];
+									$(_u_c[1]).find('img')[0].src=imgList[list[1][1]]||$(_u_c[0]).find('img')[0].src;
+									_u_c[1]["_child"] =_u_c[1]["_parent"]=null;
+									$(_u_c[1]).find(".line").remove();
+									
+									_t_c[0]["_type"]=list[4][0];
+									var tmm = $(_t_c[0]).find('img')[0].src;
+									$(_t_c[0]).find('img')[0].src=imgList[list[4][0]]||$(_t_c[1]).find('img')[0].src;
+									_t_c[0]["_child"] =_t_c[0]["_parent"]=null;
+									$(_t_c[0]).find(".line").remove();
+									
+									_t_c[1]["_type"]=list[4][1];
+									$(_t_c[1]).find('img')[0].src=imgList[list[4][1]]||tmm;
+									_t_c[1]["_child"] =_t_c[1]["_parent"]=null;
+									$(_t_c[1]).find(".line").remove();
+									
+									if(_t_c[0]["_type"]=="4"){
+										$(_t_c[0]).append(creatDownline());
+										_t_c[0]["_child"] = _u_c[0];
+										_u_c[0]["_parent"]=_t_c[0];
+									}else if(_u_c[0]["_type"]=="4"){
+										$(_u_c[0]).append(creatDownline());
+										_u_c[0]["_child"] = _t_c[0];
+										_t_c[0]["_parent"]=_u_c[0];
+									}else if(_t_c[1]["_type"]=="4"){
+										$(_t_c[1]).append(creatDownline());
+										_t_c[1]["_child"] = _u_c[1];
+										_u_c[1]["_parent"]=_t_c[1];
+									}else if(_u_c[1]["_type"]=="4"){
+										$(_u_c[1]).append(creatDownline());
+										_u_c[1]["_child"] = _t_c[1];
+										_t_c[1]["_parent"]=_u_c[1];
+									}
+									/* $(lastSquare).find('img')[0].style.border="";
+									$(currentSquare).find('img')[0].style.border="";
+									currentSquare=null;
+									lastSquare=null; */
+									isSame = true;
+									$(_u_c[0]).find('img')[0].style.border="1px dotted red";
+									$(_u_c[1]).find('img')[0].style.border="1px dotted green";
+									var lasttemp1 = parseInt(_u_c[0].style.left)+"vw";
+									var tmpleft1 = parseInt(_u_c[1].style.left)+"vw";
+									_u_c[1].style.left=parseInt(_u_c[0].style.left)+"vw";
+									_u_c[0].style.left=parseInt(tmpleft1)+"vw";
+									TweenLite.to(_u_c[1].style, SPEED_H, {left:tmpleft1,onComplete:function(){
+										console.log("滑动完毕41")
+										
+									}}); 
+									TweenLite.to(_u_c[0].style, SPEED_H, {left:lasttemp1,onComplete:function(){
+										console.log("滑动完毕42")
+										$(_u_c[0]).find('img')[0].style.border="";
+										$(_u_c[1]).find('img')[0].style.border="";
+										
+									}}); 
+									$(currentSquare).find('img')[0].style.border="1px dotted red";
+									$(lastSquare).find('img')[0].style.border="1px dotted green";
+									var lasttemp = parseInt(lastSquare.style.left)+"vw";
+									var tmpleft = parseInt(currentSquare.style.left)+"vw";
+									currentSquare.style.left=parseInt(lastSquare.style.left)+"vw";
+									lastSquare.style.left=parseInt(tmpleft)+"vw";
+									TweenLite.to(currentSquare.style, SPEED_H, {left:tmpleft,onComplete:function(){
+										console.log("滑动完毕6")
+										
+									}}); 
+									TweenLite.to(lastSquare.style, SPEED_H, {left:lasttemp,onComplete:function(){
+										console.log("滑动完毕7",lastSquare)
+										$(lastSquare).find('img')[0].style.border="";
+										$(currentSquare).find('img')[0].style.border="";
+										currentSquare=null;
+										lastSquare=null;
+										isSame = true;
+										// var time = setTimeout(function(){
+											
+											checkSquare("#square1");
+											checkSquare("#square2");
+											checkSquare("#square3");
+											checkSquare("#square4");
+											checkSquare("#square5");
+											$("#moveMask").hide();
+											// clearTimeout(time);
+										// },200)
+									}}); 
+									createFormula(list);
+									break;
+								}
+								
+								
+								
+								
+								
+								
+							}
+							
+							
+							
+						}
+						
+						
+						
+					//}
+				
+					//表示存在交换
+					/* if(isSame){
+						
+						checkSquare("#square1");
+						checkSquare("#square2");
+						checkSquare("#square3");
+						checkSquare("#square4");
+						
+					}else{
+						$(lastSquare).find('img')[0].style.border="";
+						$(currentSquare).find('img')[0].style.border="";
+						currentSquare=null;
+						lastSquare=null;
+					} */
+			}
+			
+			/**
+			 * 通过left index获取对应的下标方块，因为随着加加减减，他妈的用index()获取的都不一样了
+			 * **/
+			function getSquareByLeft(ix,cname){
+				var citem = null;
+				$(cname+" .quantum").each(function(i,item){
+					var lx = parseInt(item.style.left)/6;
+					if(ix == lx){
+						citem = item
+						
+						return citem;
+					}
+						
+					
+					
+				});
+				return citem;
+			}
+			
+			
+			/**得到上一行或者下一行相同位置的方块
+			*a 本行元素
+			* f 方向是上一行还是下一行,last表示上一行,next表示下一行
+			* 因为随着加加减减，他妈的用index()获取的都不一样了 ，但这里也能用
+			**/
+			function getSameIndexLast( a, f){
+				
+				//本行父容器
+				var pname = a["parentSquareName"];
+				var index = parseInt(pname.substring(pname.length-1));
+				var cname =null;
+				//last表示上一行
+				if(f=="last"){
+					cname = "#square"+(index-1);
+				}else if(f=="next"){
+					//next表示下一行
+					cname = "#square"+(index+1);
+				}
+				var lx = parseInt(a.style.left)/6;
+				var pi = $(cname+" .quantum").index(a);
+				console.log(a["parentSquareName"], f,cname,$(cname).find(".quantum").index(a));
+				var citem = null;
+				$(cname+" .quantum").each(function(i,item){
+					var li = parseInt(item.style.left)/6;
+					if(li==lx){
+						citem = item;
+						return citem;
+					}
+					
+				});
+				return citem;
+			}
+		
+			
+			
+			function getR(r){
+				var ccr = [0,1,2,3];
+				for(var i=0;i<ccr.length;i++){
+					if(ccr[i]==r){
+						ccr.splice(i,1);
+						i--;
+					}
+				}
+				var rr = ccr[Math.floor(Math.random()*(ccr.length))];
+				return rr;
+			}
+			/**两个确定的中间产生一个**/
+			function getRf(r,f){
+				var ccr = [0,1,2,3];
+				for(var i=0;i<ccr.length;i++){
+					if(ccr[i]==r||ccr[i]==f){
+						ccr.splice(i,1);
+						i--;
+					}
+				}
+				var rr = ccr[Math.floor(Math.random()*(ccr.length))];
+				return rr;
+			}
+			
+			
+			// function squareclick(e) {
+			// 	if(shenList.length>0){
+			// 		$(shenList[0]).removeClass("shake-ss");
+			// 		// $(shenList[1]).removeClass("shake");
+			// 		$(shenList[1]).removeClass("shake-ss");
+			// 		shenList=[];
+			// 	}
+			// 	console.log(e.currentTarget,e.currentTarget["_parent"],e.currentTarget["_child"]);
+			// 	if(currentSquare&&currentSquare!=e.currentTarget){
+					
+					
+					
+			// 		if(currentSquare["parentSquareName"]!=e.currentTarget["parentSquareName"]){
+			// 			//mui.toast("不同行不能消");
+			// 			$(currentSquare).find('img')[0].style.border="";
+			// 			currentSquare = e.currentTarget;
+			// 			$(currentSquare).find('img')[0].style.border="5px solid #a4efcf";
+			// 			return;
+			// 		}
+			// 		/* if(currentSquare["_type"]==e.currentTarget["_type"]){
+			// 			console.log("相同得量子门无法抵消");
+			// 			return;
+			// 		} */
+			// 		if(Math.abs(parseInt(currentSquare.style.left)-parseInt(e.currentTarget.style.left))!=6){
+			// 			console.log("不相邻的量子门无法抵消");
+			// 			return;
+			// 		}
+			// 		/* if(currentSquare["_child"]==e.currentTarget){
+			// 			console.log("双比特");
+			// 			return;
+			// 		}
+			// 		if(currentSquare["_parent"]==e.currentTarget){
+			// 			console.log("双比特");
+			// 			return;
+			// 		} */
+			// 		lastSquare = currentSquare;
+			// 		currentSquare = e.currentTarget;
+					
+			// 		whois(currentSquare,lastSquare,e.currentTarget["parentSquareName"]);
+			// 		currentSquare=null;
+			// 		lastSquare=null;
+			// 		/* if(!isSame){
+			// 			lastSquare.style.border="";
+			// 			currentSquare.style.border="";
+			// 			currentSquare=null;
+			// 			lastSquare=null;
+			// 		} */
+			// 		//先点右边再点左边
+			// 		/*if( lastSquare["_index"]> currentSquare["_index"]){
+						
+			// 			//HX=ZH  01换成30
+			// 			if(currentSquare["_type"] ==0&&lastSquare["_type"] ==1){
+			// 				currentSquare.src=imgList[3];
+			// 				currentSquare["_type"]=3;
+			// 				var tmp = currentSquare["_index"];
+			// 				currentSquare["_index"]=lastSquare["_index"];
+			// 				lastSquare["_index"] = tmp;
+			// 				lastSquare.src=imgList[0];
+			// 				lastSquare["_type"]=0;
+							
+			// 			//XH=HZ  10换成03
+			// 			}else if(currentSquare["_type"] ==1&&lastSquare["_type"] ==0){
+			// 				currentSquare.src=imgList[0];
+			// 				currentSquare["_type"]=0;
+			// 				var tmp = currentSquare["_index"];
+			// 				currentSquare["_index"]=lastSquare["_index"];
+			// 				lastSquare["_index"] = tmp;
+			// 				lastSquare.src=imgList[3];
+			// 				lastSquare["_type"]=3;
+						
+			// 			//HY=-YH  02换成20
+			// 			}else if(currentSquare["_type"] ==0&&lastSquare["_type"] ==2){
+			// 				currentSquare.src=imgList[2];
+			// 				currentSquare["_type"]=2;
+			// 				var tmp = currentSquare["_index"];
+			// 				currentSquare["_index"]=lastSquare["_index"];
+			// 				lastSquare["_index"] = tmp;
+			// 				lastSquare.src=imgList[0];
+			// 				lastSquare["_type"]=0;
+						
+			// 			//XY=-YX  12换成21
+			// 			}else if(currentSquare["_type"] ==1&&lastSquare["_type"] ==2){
+			// 				currentSquare.src=imgList[2];
+			// 				currentSquare["_type"]=2;
+			// 				var tmp = currentSquare["_index"];
+			// 				currentSquare["_index"]=lastSquare["_index"];
+			// 				lastSquare["_index"] = tmp;
+			// 				lastSquare.src=imgList[1];
+			// 				lastSquare["_type"]=1;
+						
+			// 			//XZ=-ZX  13换成31
+			// 			}else if(currentSquare["_type"] ==1&&lastSquare["_type"] ==3){
+			// 				currentSquare.src=imgList[3];
+			// 				currentSquare["_type"]=3;
+			// 				var tmp = currentSquare["_index"];
+			// 				currentSquare["_index"]=lastSquare["_index"];
+			// 				lastSquare["_index"] = tmp;
+			// 				lastSquare.src=imgList[1];
+			// 				lastSquare["_type"]=1;
+						
+			// 			//YZ=-ZY  23换成32
+			// 			}else if(currentSquare["_type"] ==2&&lastSquare["_type"] ==3){
+			// 				currentSquare.src=imgList[3];
+			// 				currentSquare["_type"]=3;
+			// 				var tmp = currentSquare["_index"];
+			// 				currentSquare["_index"]=lastSquare["_index"];
+			// 				lastSquare["_index"] = tmp;
+			// 				lastSquare.src=imgList[2];
+			// 				lastSquare["_type"]=2;
+			// 			}
+			// 		}*/
+					
+					
+					
+					
+					
+					
+					
+					
+					
+			// 	}else if(currentSquare&&currentSquare==e.currentTarget){
+			// 		console.log("点击得同一个");
+					
+			// 		$(currentSquare).find('img')[0].style.border="";
+			// 		currentSquare = null;
+			// 	}else{
+					
+			// 		currentSquare = e.currentTarget;
+			// 		$(currentSquare).find('img')[0].style.border="5px dashed #a4efcf";
+			// 		//console.log(currentSquare["_parent"],currentSquare["_child"]);
+					
+			// 	}
+			// }
+			
+			$('#particle').fireworks(options);
+			function deleteRokets(){
+				
+				for(var i=0,m=roketList.length;i<m;i++){
+					//console.log(roketList[i],roketList[i]["parentSquareName"]);
+					$(roketList[i]).remove();
+				}
+				roketList = [];
+			}
+			
+			function getQueryString(name) {
+				//console.log(name);
+			    var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+			    var r = window.location.search.substr(1).match(reg);
+			    //console.log(r);
+			    if (r != null) {
+			        //转码方式改成 decodeURI
+			        return decodeURI(r[2]);
+			    }
+			    return null;
+			}
+		</script>
+			<script src="../js/until.js"></script>
+	</body>
+
+</html>

@@ -1,0 +1,1293 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.css" rel="stylesheet" />
+		<link href="../css/video-js.min.css" rel="stylesheet">
+		<link href="../login/css/style.css" rel='stylesheet' type='text/css' media="all" />
+		<style>
+			.mui-content{
+				width: 100vw;
+				height: 100vh;
+				background: url(../images/login/loginbg.png) ;
+				
+				filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+				-moz-background-size:100% 100%;
+				background-size:100% 100%;
+				background-repeat:no-repeat;
+			}
+		#pausebtn{
+			
+				width: 6.5%;
+				height: 11.7%;
+				position: absolute;
+				/* top:2.13%; */
+				left: 1.85%;
+				cursor: pointer;
+			z-index: 8;
+		}
+		#tip{
+			width: 30vw;
+			height: 5.9vh;
+			position: absolute;
+			right:2.7vw ;
+			top: 1.8vh;
+			    z-index: 10;
+		}
+		#tip1{
+			width: 30vw;
+			height: 5.9vh;
+			position: absolute;
+			right:0;
+			top: 0;
+		}
+		#tip4{
+			    width: 46vw;
+			    height: 5.9vh;
+			    position: absolute;
+			    right: 0;
+			    top: 0
+		}
+		#tip2{
+			    width: 24.5vw;
+			    height: 3vh;
+			    position: absolute;
+			    right: 2.7vw;
+			    top: 0.8vh;
+			    font-size: 1.5vw;
+			    color: #78CBD3;
+				
+				
+		}
+		#tip3{
+			    width: 39.5vw;
+				height: 3vh;
+				position: absolute;
+				right: 2.7vw;
+				top: 0.8vh;
+				font-size: 1.5vw;
+				color: #78CBD3;
+				line-height: 3vh;
+		}
+		.pass{
+			position: absolute;
+			    width: 14.9vw;
+			    height: 24vh;
+				    z-index: 10;
+		}
+		.passImg{
+			position: absolute;
+			    /* width: 15.9vw;
+			    height: 24vh; */
+				    width: 14.9vw;
+				    height: 22vh;
+		}
+		.passTxt{
+			position: absolute;
+			    top: 8.3vh;
+			    /* left: 5vw; */
+			    color: #79E8EA;
+			    font-size: 2vw;
+			    font-weight: 800;
+			    width: 100%;
+			    text-align: center;
+		}
+		#pass1{
+			top: 30.3vh;
+			left: 19.9vw;
+		}
+		
+		#pass2{
+			top: 30.3vh;
+			left: 35.6vw;
+		}
+		#pass3{
+			top: 30.3vh;
+			left: 51.6vw;
+		}
+		#pass4{
+			top: 30.3vh;
+			left: 67.8vw;
+		}
+		#pass5{
+			top: 52.9vh;
+			left: 28.1vw;
+		}
+		#pass6{
+			top: 52.9vh;
+			left: 43.9vw;
+		}
+		#pass7{
+			top: 52.9vh;
+			left: 59.8vw;
+		}
+		#pass8{
+			/* top: 75vh;
+			left: 45.6vw; */
+			top: 75vh;
+			/* left: 35.1vw; */
+			left: 36.1vw;
+		}
+		
+		#pass10{
+			top: 75vh;
+			/* left: 53.9vw; */
+			left:50.9vw;
+		}
+		#pass11{
+			top: 10vh;
+			/* left: 53.9vw; */
+			left:18vw;
+		}
+		#pass12{
+			top: 10vh;
+			/* left: 53.9vw; */
+			left:41.5vw;
+		}
+		#pass9{
+			/* top: 75vh; */
+			/* left: 53.9vw; */
+			top: 10vh;
+			left: 65vw;
+		}
+		.failimg{
+			position: absolute;
+			    right: -7vw;
+			    top: 1vw;
+				    width: 28vw;
+		}
+		#qiehuan{
+			position: absolute;
+			    right: 1vw;
+			    font-size: 2vw;
+			    color: #79E8EAFF;
+			    top: 0vh;
+			    z-index: 10;
+			    left: 11vw;
+			    width: 10vw;
+			    text-align: center;
+			    /* border: 1px solid; */
+			    border-radius: 5px;
+			    padding: 10px;
+		}
+		#qiehuan img{
+			width: 11vw;
+		}
+		.mda{
+			position: absolute;
+			left: 0px;
+			top: 0px;
+			 z-index: 999;
+			 width: 100%;
+			 height: 100%;
+			 background-color: #191919;
+			 	display: none;
+		}
+		.m {
+			width: 960px;
+			height: 400px;
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: 100px;
+			
+		}
+		#pausebtns {
+		    width: 6.5%;
+		    height: 11.7%;
+		    position: absolute;
+		    top: 2.13%; 
+		    left: 1.85%;
+		    cursor: pointer;
+		    z-index: 8;
+		
+		}
+		.dapass{
+			width: 22vw;
+			
+		}
+		.dapass .passTxt{
+			font-size: 1.6vw;
+		}
+		.dapass img{
+			width: 22vw;
+		}
+		#person{
+			width: 27vw;
+			height: 6vh;
+			position: absolute;
+			left: 0.7vw;
+    bottom: 0.8vh;
+			font-size: 1.5vw;
+			color: #78CBD3;
+			line-height: 3vh;
+			z-index: 10;
+		}
+		</style>
+	</head>
+
+	<body>
+		<div class="mui-content" id="mui-content">
+			<img id="pausebtn" src="../images/login/back.png" />
+			<div id="tip">
+				<img id="tip1" src="../images/login/tips.png" />
+				<div id="tip2">欢迎<span class="accountspan"></span>来到量子世界，请选择关卡～</div>
+				<img id="tip4"" style="display: none;" src="../images/login/tips.png" />
+				<div id="tip3" style="display: none;">Welcome to the quantum world, please choose the level～</div>
+				
+			</div>
+			<div id="person">
+				
+				
+			</div>
+			<div id="pass1" class="pass guan" pass="1">
+				<img class="passImg" src="../images/login/border.png" />
+				<div class="passTxt">第一关</div>
+			</div>
+			<div id="pass2" class="pass guan" pass="2">
+				<img class="passImg" src="../images/login/border.png" />
+				<div class="passTxt">第二关</div>
+			</div>
+			<div id="pass3" class="pass guan" pass="3">
+				<img class="passImg" src="../images/login/border.png" />
+				<div class="passTxt">第三关</div>
+			</div>
+			<div id="pass4" class="pass guan" pass="4">
+				<img class="passImg" src="../images/login/border.png" />
+				<div class="passTxt">第四关</div>
+			</div>
+			<div id="pass5" class="pass guan" pass="5">
+				<img class="passImg" src="../images/login/border.png" />
+				<div class="passTxt">第五关</div>
+			</div>
+			<div id="pass6" class="pass guan" pass="6">
+				<img class="passImg" src="../images/login/border.png" />
+				<div class="passTxt">第六关</div>
+			</div>
+			<div id="pass7" class="pass guan" pass="7">
+				<img class="passImg" src="../images/login/border.png" />
+				<div class="passTxt">第七关</div>
+			</div>
+			<div id="pass8" class="pass guan" pass="8">  
+				<img class="passImg" src="../images/login/border.png" />
+				<div class="passTxt">第八关</div>
+			</div>
+			<div id="pass9" class="pass dapass" pass="9" >
+				<img class="passImg" src="../images/login/tong.png" style="height: 20vh;"/>
+				<div class="passTxt" style="font-size: 1.9vw;">训练模式</div>
+			</div>
+			<div id="pass10" class="pass guan" pass="10">
+				 <img class="passImg" src="../images/login/border.png" />
+				<div class="passTxt">更多关卡</div>
+			</div>
+			<div id="pass11" class="pass dapass" pass="11">
+				<img class="passImg" src="../images/login/tong.png"  style="height: 20vh;"/>
+				<div class="passTxt" style="font-size: 1.9vw;">教学视频</div>
+			</div>
+			<div id="pass12" class="pass dapass" pass="12">
+				<img class="passImg" src="../images/login/tong.png"  style="height: 20vh;"/>
+				<div class="passTxt" style="font-size: 1.9vw;">排行榜</div>
+			</div>
+			<div id="qiehuan">
+				<img/>
+				
+			</div>
+		</div>
+		
+		<!-- 登录注册页 block-->
+		
+		<div class="login" style="display:block">
+			<div class="header1"  style="margin-bottom: 20px;">
+				<label atm='1' style="border-bottom: 2px solid #8CEEFA;" id="loginTitle">登录</label>&nbsp;&nbsp;&nbsp;&nbsp;
+				<label atm='2' class="te-label"  id="regTitle">注册</label>
+			</div>
+			<div class="content1">
+				<form class="fromone" >
+					<div class="input-list" style="    margin-top: 0px;">
+						<input class="deinput"  id="account" type="text" placeholder="请输入用户名">
+						<img src='../login/images/delete-icon.png' width="20" class='delete'>
+					</div>
+					<div class="input-list" style="    margin-top: 0px;">
+						<input type="password" id="password" placeholder="请输入密码" >
+		                <img src='../login/images/hide-icon.png' atm='hid' width="20" class="hidimg">
+						<img src='../login/images/show-icon.png' atm='show' width="20" class="hidimg" style="display: none;">
+					</div>
+				    <p atm='3' class="p-forget">忘记密码</p>
+					<div class="input-list" style="    margin-top: 0px;">
+						<input class="deinput"  id="code" type="text" placeholder="请输入验证码">
+						<img id='kaptcha' src='/api/kaptcha' width="20" style='width: 20%;' class=''>
+					</div>
+					<div class="button-row">
+						<input type="button" id="login" class="sign-in" value="登录">
+						<input type="button" id="tourist" class="sign-in" value="游客模式">
+					</div>
+		        </form>
+		        <form class="fromtwo" style="display: none;">
+					<div class="input-list">
+						<input class="deinput" id="account_r" type="text" placeholder="请输入用户名">
+						<img src='../login/images/delete-icon.png' width="20" class='delete'>
+					</div>
+					<div class="input-list">
+						<input type="password" id="password_r" placeholder="请输入密码" >
+						<img src='../login/images/hide-icon.png' atm='hid' width="20" class="hidimg">
+						<img src='../login/images/show-icon.png' atm='show' width="20" class="hidimg"  style="display: none;">
+					</div>
+					
+					<div class="button-row">
+						<input type="button" id="register"  class="sign-in" value="注册">
+					</div>
+				</form>
+			</div>
+		</div>
+		
+		<!-- 登录注册页 -->
+		
+		<script src="../js/mui.js"></script>
+		<script src="../js/jquery.min.js"></script>
+		<script src="../js/layer.js"></script>
+		<script src="../js/path.js"></script>
+		<script type="text/javascript" src="../login/js/base.js"></script>
+		<script src='../particle/js/simplex-noise.min.js'></script>
+		<script src='../particle/js/lvrjwz.js'></script>
+		<script src="../particle/js/index.js"></script>
+		
+		<script src="../js/aes.min.js"></script>
+		
+		<div class="mda">
+			<img id="pausebtns" src="../images/game/pause.png" />
+			
+		<div class="m">
+			
+		  <video id="my-video" class="video-js" controls preload="auto" width="960" height="400"   src="" 
+			  poster="../images/m.png" data-setup="{}">
+		    <source src="http://qiniu.aimoth.cn/nanfangkeji.mp4?t=1" type="video/mp4">
+			<!--<source src="http://vjs.zencdn.net/v/oceans.webm" type="video/webm">
+			<source src="http://vjs.zencdn.net/v/oceans.ogv" type="video/ogg">-->
+		    <p class="vjs-no-js"> To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a> </p>
+		  </video>
+		  
+		  <script src="../js/video.min.js"></script> 
+		  <script type="text/javascript">
+			 var NAV_IS_PHONE=true;//默认手机端
+			 var NAV_IS_PAD=false;//默认
+			 var playerOption={
+					"width":"960px",
+					        "height":"400px",
+					        "poster":"../images/m.png",
+					        "autoplay":false
+					}
+			 //if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
+			 if ((navigator.userAgent.match(/(phone|pod|iPhone|ios|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
+			   
+			    //alert('手机端');
+			    NAV_IS_PHONE=true;
+				
+				var video = document.getElementById("my-video")
+				video.width="640" 
+				video.height="320"
+				$(".m").css({"width":"640px","height":"320px","margin-top": "40px"});
+				playerOption.width="640px";
+				playerOption.height="320px";
+			    
+			 }else{
+			    //alert('PC端')
+			    NAV_IS_PHONE=false;
+			 }
+			 
+			 if (navigator.userAgent.match(/(pad|pod|iPod|iPad)/i)){
+			 	   NAV_IS_PAD=true;
+			 	   
+			    }
+			  //设置中文
+			  videojs.addLanguage('zh-CN', {
+				  "Play": "播放",
+				  "Pause": "暂停",
+				  "Current Time": "当前时间",
+				  "Duration": "时长",
+				  "Remaining Time": "剩余时间",
+				  "Stream Type": "媒体流类型",
+				  "LIVE": "直播",
+				  "Loaded": "加载完毕",
+				  "Progress": "进度",
+				  "Fullscreen": "全屏",
+				  "Non-Fullscreen": "退出全屏",
+				  "Mute": "静音",
+				  "Unmute": "取消静音",
+				  "Playback Rate": "播放速度",
+				  "Subtitles": "字幕",
+				  "subtitles off": "关闭字幕",
+				  "Captions": "内嵌字幕",
+				  "captions off": "关闭内嵌字幕",
+				  "Chapters": "节目段落",
+				  "Close Modal Dialog": "关闭弹窗",
+				  "Descriptions": "描述",
+				  "descriptions off": "关闭描述",
+				  "Audio Track": "音轨",
+				  "You aborted the media playback": "视频播放被终止",
+				  "A network error caused the media download to fail part-way.": "网络错误导致视频下载中途失败。",
+				  "The media could not be loaded, either because the server or network failed or because the format is not supported.": "视频因格式不支持或者服务器或网络的问题无法加载。",
+				  "The media playback was aborted due to a corruption problem or because the media used features your browser did not support.": "由于视频文件损坏或是该视频使用了你的浏览器不支持的功能，播放终止。",
+				  "No compatible source was found for this media.": "无法找到此视频兼容的源。",
+				  "The media is encrypted and we do not have the keys to decrypt it.": "视频已加密，无法解密。",
+				  "Play Video": "播放视频",
+				  "Close": "关闭",
+				  "Modal Window": "弹窗",
+				  "This is a modal window": "这是一个弹窗",
+				  "This modal can be closed by pressing the Escape key or activating the close button.": "可以按ESC按键或启用关闭按钮来关闭此弹窗。",
+				  ", opens captions settings dialog": ", 开启标题设置弹窗",
+				  ", opens subtitles settings dialog": ", 开启字幕设置弹窗",
+				  ", opens descriptions settings dialog": ", 开启描述设置弹窗",
+				  ", selected": ", 选择",
+				  "captions settings": "字幕设定",
+				  "Audio Player": "音频播放器",
+				  "Video Player": "视频播放器",
+				  "Replay": "重播",
+				  "Progress Bar": "进度小节",
+				  "Volume Level": "音量",
+				  "subtitles settings": "字幕设定",
+				  "descriptions settings": "描述设定",
+				  "Text": "文字",
+				  "White": "白",
+				  "Black": "黑",
+				  "Red": "红",
+				  "Green": "绿",
+				  "Blue": "蓝",
+				  "Yellow": "黄",
+				  "Magenta": "紫红",
+				  "Cyan": "青",
+				  "Background": "背景",
+				  "Window": "视窗",
+				  "Transparent": "透明",
+				  "Semi-Transparent": "半透明",
+				  "Opaque": "不透明",
+				  "Font Size": "字体尺寸",
+				  "Text Edge Style": "字体边缘样式",
+				  "None": "无",
+				  "Raised": "浮雕",
+				  "Depressed": "压低",
+				  "Uniform": "均匀",
+				  "Dropshadow": "下阴影",
+				  "Font Family": "字体库",
+				  "Proportional Sans-Serif": "比例无细体",
+				  "Monospace Sans-Serif": "单间隔无细体",
+				  "Proportional Serif": "比例细体",
+				  "Monospace Serif": "单间隔细体",
+				  "Casual": "舒适",
+				  "Script": "手写体",
+				  "Small Caps": "小型大写字体",
+				  "Reset": "重启",
+				  "restore all settings to the default values": "恢复全部设定至预设值",
+				  "Done": "完成",
+				  "Caption Settings Dialog": "字幕设定视窗",
+				  "Beginning of dialog window. Escape will cancel and close the window.": "开始对话视窗。离开会取消及关闭视窗",
+				  "End of dialog window.": "结束对话视窗"
+				});
+			  
+			  
+			  
+			  
+			  
+			  
+				var myPlayer = videojs('my-video', playerOption);
+					// myPlayer.play();
+				videojs("my-video").ready(function(){
+					// console.log("开始自动播放");
+					 // var myPlayer = this;
+					 // myPlayer.play();
+					// setTimeout(function() {              
+					//                 myPlayer.volume(1);
+					// 				document.getElementById("my-video").muted = "false";
+					// 				console.log(myPlayer);
+					//                //笔者在测试播放视频控件的demo里发现volume是一个属性，不是函数
+					//             },1000);
+				});
+				//返回
+				document.getElementById("pausebtns").addEventListener('tap',function(){
+									$(".mda").hide();
+									myPlayer.pause();
+				})
+				/* document.body.addEventListener('tap',function(){
+									console.log("返回");
+									//history.go(-1);
+				}) */
+			</script> 
+			
+		</div></div>
+		
+		<script type="text/javascript">
+			mui.init();
+			
+			onresize();
+			function onresize(){
+				//console.log(window);
+				// document.getElementById("mui-content").style.width=window.outerWidth+"px";
+				// document.getElementById("mui-content").style.height=window.outerHeight+"px";
+				//document.getElementById("mui-content").style["background-size"].width=window.outerWidth+"px";
+				//document.getElementById("mui-content").style["background-size"].height=window.outerHeight+"px";
+			}
+			
+			window.onresize=function(){
+				onresize();
+			};
+			window.addEventListener('onresize',function(event){
+			  //通过event.detail可获得传递过来的参数内容
+			  onresize();
+			});
+			
+			
+			if(parseInt(localStorage.nextLevel)>8){
+				$("#pass8 .passTxt").html("第"+convertToChinaNum(localStorage.nextLevel)+"关");
+			}
+			
+			$(".guan").each(function(i,item){
+				
+				var pass=$(item).attr("pass");
+				if(parseInt(pass)>parseInt(localStorage.level)&&pass!="9"&&pass!="11"){
+					
+					$(item).find('img').attr('src','../images/login/fail.png');
+					$(item).find('img').addClass("failimg");
+					$(item).find('.passTxt').css("color","#E5E5E5");
+				}
+				
+			});
+			
+			$(".pass").click(function(e){
+		
+				console.log(e.currentTarget);
+				var pass=$(e.currentTarget).attr("pass");
+				if(!localStorage.level)localStorage.level=1;
+				//------------判断端口等级--------------
+				if(parseInt(pass)>parseInt(localStorage.level)&&pass!="9"&&pass!="11"&&pass!="12"){
+					
+					mui.toast("您还未完成"+localStorage.level+"关卡!");
+					return;
+				}
+				
+				if(pass=="1"){
+					if(getQueryString("type")=="8"){
+						mui.openWindow("../pc.html?url=pages/game.html");
+					}else
+					mui.openWindow("game.html");
+				}else if(pass=="2"){
+					if(getQueryString("type")=="8"){
+						mui.openWindow("../pc.html?url=pages/gametwo.html");
+					}else
+					mui.openWindow("gametwo.html");
+				}else if(pass=="3"){
+					if(getQueryString("type")=="8"){
+						mui.openWindow("../pc.html?url=pages/gamethree.html");
+					}else
+					mui.openWindow("gamethree.html");
+				}else if(pass=="4"){
+					if(getQueryString("type")=="8"){
+						mui.openWindow("../pc.html?url=pages/gamefour.html");
+					}else
+					mui.openWindow("gamefour.html");
+				}else if(pass=="5"){
+					if(getQueryString("type")=="8"){
+						mui.openWindow("../pc.html?url=pages/gamefive.html");
+					}else
+					mui.openWindow("gamefive.html");
+				}else if(pass=="6"){
+					if(getQueryString("type")=="8"){
+						mui.openWindow("../pc.html?url=pages/gamesix.html");
+					}else
+					mui.openWindow("gamesix.html");
+				}else if(pass=="7"){
+					if(getQueryString("type")=="8"){
+						mui.openWindow("../pc.html?url=pages/gameseven.html");
+					}else
+					mui.openWindow("gameseven.html");
+				}else if(pass=="8"){
+					if(getQueryString("type")=="8"){
+						mui.openWindow("../pc.html?url=pages/gameegiht.html");
+					}else
+					mui.openWindow("gameegiht.html");
+				}else if(pass=="9"){
+					if(getQueryString("type")=="8"){
+						mui.openWindow("../pc.html?url=pages/xunlian.html");
+					}else
+					mui.openWindow("xunlian.html");
+				}else if(pass=="10"){
+					if(getQueryString("type")=="8"){
+						mui.openWindow("../pc.html?url=pages/eightnine.html");
+					}else
+					mui.openWindow("eightnine.html");
+				}else if(pass=="11"){
+					// if(getQueryString("type")=="11"){
+					// 	mui.openWindow("../pc.html?url=pages/view.html");
+					// }else
+					// mui.openWindow("view.html");
+						$(".mda").show();
+						myPlayer.play();
+				}else if(pass=="12"){
+					if(getQueryString("type")=="8"){
+						mui.openWindow("../pc.html?url=login/ranking-list.html");
+					}else
+					mui.openWindow("../login/ranking-list.html");
+				}
+			});
+			function getQueryString(name) {
+				//console.log(name);
+			    var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+			    var r = window.location.search.substr(1).match(reg);
+			    //console.log(r);
+			    if (r != null) {
+			        //转码方式改成 decodeURI
+			        return decodeURI(r[2]);
+			    }
+			    return null;
+			}
+			
+			
+			//将数字（整数）转为汉字，从零到一亿亿，需要小数的可自行截取小数点后面的数字直接替换对应arr1的读法就行了
+			function convertToChinaNum(num) {
+			    var arr1 = new Array('零', '一', '二', '三', '四', '五', '六', '七', '八', '九');
+			    var arr2 = new Array('', '十', '百', '千', '万', '十', '百', '千', '亿', '十', '百', '千','万', '十', '百', '千','亿');//可继续追加更高位转换值
+			    if(!num || isNaN(num)){
+			        return "零";
+			    }
+			    var english = num.toString().split("")
+			    var result = "";
+			    for (var i = 0; i < english.length; i++) {
+			        var des_i = english.length - 1 - i;//倒序排列设值
+			        result = arr2[i] + result;
+			        var arr1_index = english[des_i];
+			        result = arr1[arr1_index] + result;
+			    }
+			    //将【零千、零百】换成【零】 【十零】换成【十】
+			    result = result.replace(/零(千|百|十)/g, '零').replace(/十零/g, '十');
+			    //合并中间多个零为一个零
+			    result = result.replace(/零+/g, '零');
+			    //将【零亿】换成【亿】【零万】换成【万】
+			    result = result.replace(/零亿/g, '亿').replace(/零万/g, '万');
+			    //将【亿万】换成【亿】
+			    result = result.replace(/亿万/g, '亿');
+			    //移除末尾的零
+			    result = result.replace(/零+$/, '')
+			    //将【零一十】换成【零十】
+			    //result = result.replace(/零一十/g, '零十');//貌似正规读法是零一十
+			    //将【一十】换成【十】
+			    result = result.replace(/^一十/g, '十');
+			    return result;
+			}
+			/* ————————————————
+			版权声明：本文为CSDN博主「xiao_lone」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+			原文链接：https://blog.csdn.net/xiao_lone/article/details/86607206 */
+			
+			document.getElementById("qiehuan").addEventListener('tap',function(e){
+								//console.log(e);
+								if(localStorage.isEngish=="true"){
+									localStorage.isEngish="false";
+									$("#qiehuan img").attr("src","../images/login/en.png");
+									
+									$("#tip1").show();
+									$("#tip2").show();
+									$("#tip3").hide();
+									$("#tip4").hide();
+									$("#pass1 .passTxt").html("第一关");
+									$("#pass2 .passTxt").html("第二关");
+									$("#pass3 .passTxt").html("第三关");
+									$("#pass4 .passTxt").html("第四关");
+									$("#pass5 .passTxt").html("第五关");
+									$("#pass6 .passTxt").html("第六关");
+									$("#pass7 .passTxt").html("第七关");
+									$("#pass8 .passTxt").html("第八关");
+									$("#pass9 .passTxt").html("训练模式");
+									$("#pass11 .passTxt").html("教学视频");
+									$("#pass12 .passTxt").html("排行榜");
+									$("#pass10 .passTxt").html("更多关卡");
+									$(".passTxt").css("font-size", "2vw");
+									
+									if(localStorage.account.indexOf("vistor")!=-1||localStorage.account.indexOf("游客")!=-1)
+										$("#person").html("游客模式: "+localStorage.account+" 登入");
+									else{
+										$("#person").html(localStorage.account+" 登入");
+									}
+									
+								}else{
+									localStorage.isEngish="true";
+									
+									
+									
+									$("#qiehuan img").attr("src","../images/login/china.png");
+									$("#tip1").hide();
+									$("#tip2").hide();
+									$("#tip3").show();
+									$("#tip4").show();
+									$("#pass1 .passTxt").html("1st level");
+									$("#pass2 .passTxt").html("2nd level");
+									$("#pass3 .passTxt").html("3rd level");
+									$("#pass4 .passTxt").html("4th level");
+									$("#pass5 .passTxt").html("5th level");
+									$("#pass6 .passTxt").html("6th level");
+									$("#pass7 .passTxt").html("7th level");
+									$("#pass8 .passTxt").html("8th level");
+									$("#pass10 .passTxt").html("More levels");
+									$("#pass9 .passTxt").html("Training mode");
+									$("#pass11 .passTxt").html("Teaching video");
+									$("#pass12 .passTxt").html("Ranking list");
+									$(".passTxt").css("font-size", "1.7vw");
+									$("#pass9 .passTxt").css("font-size", "1.6vw");
+									$("#pass11 .passTxt").css("font-size", "1.6vw");
+									$("#pass12 .passTxt").css("font-size", "1.6vw");
+									$("#loginTitle").html("Log In");
+									$("#regTitle").html("Register");
+									$("#account").attr("placeholder","user name");
+									$("#password").attr("placeholder","password");
+									$("#account_r").attr("placeholder","user name");
+									$("#password_r").attr("placeholder","password");
+									$("#code").attr("placeholder","input code");
+									$(".p-forget").html("forget  password");
+									$("#login").val("Log In");
+									$("#tourist").val("Visitors");
+									$("#register").val("register");
+									if(localStorage.account.indexOf("vistor")!=-1||localStorage.account.indexOf("游客")!=-1)
+										$("#person").html("Tourist mode: "+localStorage.account+" Log in");
+									else{
+										$("#person").html(localStorage.account+" Log in");
+									}
+									
+								}
+							});
+							
+							
+				if(localStorage.isEngish=="true"){
+					//英文
+					// $("#qiehuan").html("Chinese");
+					$("#qiehuan img").attr("src","../images/login/china.png");
+					$("#tip1").hide();
+					$("#tip2").hide();
+					$("#tip3").show();
+					$("#tip4").show();
+					$("#pass1 .passTxt").html("1st level");
+					$("#pass2 .passTxt").html("2nd level");
+					$("#pass3 .passTxt").html("3rd level");
+					$("#pass4 .passTxt").html("4th level");
+					$("#pass5 .passTxt").html("5th level");
+					$("#pass6 .passTxt").html("6th level");
+					$("#pass7 .passTxt").html("7th level");
+					$("#pass8 .passTxt").html("8th level");
+					$("#pass10 .passTxt").html("More levels");
+					$("#pass9 .passTxt").html("Training mode");
+					$("#pass11 .passTxt").html("Teaching video");
+					$("#pass12 .passTxt").html("Ranking list");
+					$(".passTxt").css("font-size", "1.7vw");
+					$("#pass9 .passTxt").css("font-size", "1.6vw");
+					$("#pass11 .passTxt").css("font-size", "1.6vw");
+					$("#pass12 .passTxt").css("font-size", "1.6vw");
+					
+					
+					//登录注册
+					$("#loginTitle").html("Log In");
+					$("#regTitle").html("Register");
+					$("#account").attr("placeholder","user name");
+					$("#password").attr("placeholder","password");
+					$("#account_r").attr("placeholder","user name");
+					$("#password_r").attr("placeholder","password");
+					$("#code").attr("placeholder","input code");
+					$(".p-forget").html("forget  password");
+					$("#login").val("Log In");
+					$("#tourist").val("Visitors");
+					$("#register").val("register");
+				}else{
+					//$("#qiehuan").html("English");
+					$("#qiehuan img").attr("src","../images/login/en.png");
+					$("#tip1").show();
+					$("#tip2").show();
+					$("#tip3").hide();
+					$("#tip4").hide();
+					$("#pass1 .passTxt").html("第一关");
+					$("#pass2 .passTxt").html("第二关");
+					$("#pass3 .passTxt").html("第三关");
+					$("#pass4 .passTxt").html("第四关");
+					$("#pass5 .passTxt").html("第五关");
+					$("#pass6 .passTxt").html("第六关");
+					$("#pass7 .passTxt").html("第七关");
+					$("#pass8 .passTxt").html("第八关"); 
+					$("#pass10 .passTxt").html("更多关卡");
+					$("#pass9 .passTxt").html("训练模式");
+					$("#pass11 .passTxt").html("教学视频");
+					$("#pass12 .passTxt").html("排行榜");
+					$(".passTxt").css("font-size", "2vw");
+					$("#code").attr("placeholder","请输入验证码");
+					
+				}
+				
+				confirmlogin();
+				//testRegister();
+			function confirmlogin(){
+			$humanAjaxFunc(JS_PATH+'/confirmlogin',{
+							data:{
+								
+							},
+							crossDomain :true,
+							dataType:'json',//服务器返回json格式数据
+							type:'post',//HTTP请求类型
+							success:function(data){
+							
+								//获得服务器响应
+								console.log(data);
+								
+							if(data.status==200){
+								$(".login").hide();
+								localStorage.account=data.data.account;
+									// $(".accountspan").html(data.data.account)
+								if(localStorage.isEngish=="true"){
+									if(data.data.account.indexOf("vistor")!=-1||data.data.account.indexOf("游客")!=-1)
+										$("#person").html("Tourist mode: "+data.data.account+" Log in");
+									else{
+										$("#person").html(data.data.account+" Log in");
+									}
+								}else{
+									if(data.data.account.indexOf("vistor")!=-1||data.data.account.indexOf("游客")!=-1)
+										$("#person").html("游客模式: "+data.data.account+" 登入");
+									else{
+										$("#person").html(data.data.account+" 登入");
+									}
+									
+								}
+							}else{
+								
+								// testRegister();
+								
+								
+							}
+								
+							},error:function(e){
+								
+								console.log(e.responseJSON);
+							
+								
+							}
+						}
+						,null
+						,true
+						,"自动登录中"
+						);
+			}
+			//此方法废弃，以前是用来做判断冻结用的
+			// queryConfir()
+			function queryConfir(){
+				$humanAjax(JS_PATH+'/mgr/list',{
+								data:{
+									order: "desc",
+									offset: 0,
+									limit: 14,
+									deptid: 0,
+									name: 13428975450
+									
+									
+								},
+								crossDomain :true,
+								dataType:'json',//服务器返回json格式数据
+								type:'post',//HTTP请求类型
+								success:function(data){
+								
+									//获得服务器响应
+									console.log(data);
+									
+								if(data.status==200){
+									$(".login").hide()
+								}
+									
+								},error:function(e){
+									
+									console.log(e.responseJSON);
+								
+									
+								}
+							}
+							,null
+							,true
+							,"自动登录中"
+							);
+			}
+			
+			
+			//注册
+			var register = document.getElementById("register");
+			var account_r= document.getElementById("account_r");
+			var password_r= document.getElementById("password_r");
+			register.addEventListener('tap',function(e){
+				$humanAjaxFunc(JS_PATH+'/mgr/gister',{
+								data:{
+									account:aesMinEncrypt(account_r.value)
+									
+									,password:aesMinEncrypt(password_r.value)
+								},
+								crossDomain :true,
+								dataType:'json',//服务器返回json格式数据
+								type:'post',//HTTP请求类型
+								success:function(data){
+								
+									//获得服务器响应
+									console.log(data);
+									if(data=='SUCCESS'||data.status==200){
+										mui.toast("注册成功,登录");
+											loginUser(account_r.value,password_r.value,data.msg);
+											
+											
+										}
+								
+								
+									
+								},error:function(e){
+									
+									console.log(e.responseJSON);
+								
+									
+								}
+							}
+							,null
+							,true
+							,"注册中"
+							);
+				
+			});
+			//登录
+			var login = document.getElementById("login");
+			var account= document.getElementById("account");
+			var password= document.getElementById("password");
+			var code= document.getElementById("code");
+			login.addEventListener('tap',function(e){
+				loginUser(account.value,password.value,code.value);
+				
+			});
+			
+			
+			function loginUser(account,password,kaptcha){
+				$humanAjaxFunc(JS_PATH+'/loginUser',{
+								data:{
+									account:aesMinEncrypt(account)
+									,kaptcha:kaptcha
+									,remember:'on'
+									,password:aesMinEncrypt(password)
+								},
+								crossDomain :true,
+								dataType:'json',//服务器返回json格式数据
+								type:'post',//HTTP请求类型
+								success:function(data){
+								
+									//获得服务器响应
+									console.log(data);
+									
+									
+									
+									if(data=='SUCCESS'){
+										$(".login").hide();
+										confirmlogin();
+									}else{
+										if(data){
+											var a = '<h4 style="color: red;text-align:  center;">';
+											var tipIndex = data.indexOf(a);
+											
+											if(tipIndex!=-1){
+											
+												var laIndex = data.indexOf('</h4>',tipIndex);
+												
+												var tips = data.substring(tipIndex+a.length,laIndex);
+												mui.toast(tips);
+												
+											}
+										}
+										
+									}
+								
+									
+								},error:function(e){
+									
+									console.log(e.responseJSON);
+								
+									
+								}
+							}
+							,null
+							,true
+							,"登录中"
+							);
+			}
+			
+			//游客模式
+			var tourist = document.getElementById("tourist");
+			var account= document.getElementById("account");
+			var password= document.getElementById("password");
+			tourist.addEventListener('tap',function(e){
+				var vistor = "游客"
+				if(localStorage.isEngish=="true"){
+					vistor = "vistor";
+				}else{
+									
+									
+								}
+				var account = vistor+(new Date).Format('MMddHHmmss')+Math.floor(Math.random()*100)
+				localStorage.account=account;
+				
+				$humanAjaxFunc(JS_PATH+'/mgr/gister',{
+								data:{
+									account:aesMinEncrypt(account)
+									// ,kaptcha:kaptcha
+									//,remember:'on'
+									,password:aesMinEncrypt("145790")
+								},
+								crossDomain :true,
+								dataType:'json',//服务器返回json格式数据
+								type:'post',//HTTP请求类型
+								success:function(data){
+								
+									//获得服务器响应
+									console.log(data);
+									
+										if(data.status==200){
+											$humanAjaxFunc(JS_PATH+'/loginUser',{
+															data:{
+																account:aesMinEncrypt(localStorage.account)
+																,remember:'on'
+																,kaptcha:data.msg
+																,password:aesMinEncrypt("145790")
+															},
+															crossDomain :true,
+															dataType:'json',//服务器返回json格式数据
+															type:'post',//HTTP请求类型
+															success:function(data){
+															
+																//获得服务器响应
+																console.log(data);
+																if(data=='SUCCESS'){
+																	$(".login").hide()
+																}
+															
+																
+															},error:function(e){
+																
+																console.log(e.responseJSON);
+															
+																
+															}
+														}
+														,null
+														,true
+														,"登录中"
+														);
+										}
+									
+								},error:function(e){
+									
+									console.log(e.responseJSON);
+								
+									
+								}
+							}
+							,null
+							,true
+							,"登录中"
+							);
+				
+			});
+			
+			//退出按钮
+			document.getElementById("pausebtn").addEventListener('tap',function(){
+				
+						var btnArray = ['取消', '确定'];
+						mui.confirm('是否要退出登录', '',  btnArray, function(e) {
+							if (e.index == 1) {
+								localStorage.clear();
+								clearCookie("adminShiroCookie");
+								clearCookie("rememberAdmin");
+								$humanAjaxFunc(JS_PATH+'/logouts',{
+												data:{
+													
+												},
+												crossDomain :true,
+												dataType:'json',//服务器返回json格式数据
+												type:'get',//HTTP请求类型
+												success:function(data){
+												
+													//获得服务器响应
+													console.log(data);
+													//if(data.status=='200'){
+														location.reload();
+													//}
+												
+													
+												},error:function(e){
+													
+													console.log(e.responseJSON);
+												
+													
+												}
+											}
+											,null
+											,true
+											,"正在退出登录"
+											);
+								
+								
+								
+								//
+							} else {
+								
+							}
+						})	
+			})
+			//设置cookie
+			function setCookie(cname, cvalue, exdays) {
+			    var d = new Date();
+			    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+			    var expires = "expires="+d.toUTCString();
+			    document.cookie = cname + "=" + cvalue + "; " + expires;
+			}
+			//获取cookie
+			function getCookie(cname) {
+			    var name = cname + "=";
+			    var ca = document.cookie.split(';');
+			    for(var i=0; i<ca.length; i++) {
+			        var c = ca[i];
+			        while (c.charAt(0)==' ') c = c.substring(1);
+			        if (c.indexOf(name) != -1) return c.substring(name.length, c.length);
+			    }
+			    return "";
+			}
+			//清除cookie  
+			function clearCookie(name) {  
+			    setCookie(name, "", -1);  
+			}  
+			
+			
+			
+			function testRegister(){
+				var vistor = "游客"
+				if(localStorage.isEngish=="true"){
+					vistor = "vistor";
+				}else{
+									
+									
+				}
+				var account = vistor+(new Date).Format('MMddHHmmss')+Math.floor(Math.random()*100)
+				localStorage.account=account;
+				
+				$humanAjaxFunc(JS_PATH_IMG+'/whios',{
+								data:{
+									whios:account
+									,username:account
+									,account:account
+									//,remember:'on'
+									,password:"145790"
+									,here:"145790"
+									
+								},
+								crossDomain :true,
+								dataType:'json',//服务器返回json格式数据
+								type:'post',//HTTP请求类型
+								success:function(data){
+								
+									//获得服务器响应
+									console.log(data);
+									
+										if(data.code==200){
+											$humanAjaxFunc(JS_PATH_IMG+'/hioser',{
+															data:{
+																account:localStorage.account
+																,remember:'on'
+																,password:"145790"
+																,here:"145790"
+															},
+															crossDomain :true,
+															dataType:'json',//服务器返回json格式数据
+															type:'post',//HTTP请求类型
+															success:function(data){
+															
+																//获得服务器响应
+																console.log(data);
+																if(data=='SUCCESS'){
+																	$(".login").hide()
+																}
+															
+																
+															},error:function(e){
+																
+																console.log(e.responseJSON);
+															
+																
+															}
+														}
+														,null
+														,false
+														,"登录中"
+														);
+										}
+									
+								},error:function(e){
+									
+									console.log(e.responseJSON);
+								
+									
+								}
+							}
+							,null
+							,false
+							,"登录中"
+							);
+			}
+			/**
+			         * 加密（需要先加载aes.min.js文件）
+			         * @param word
+			         * @returns {*}
+			         */
+			        function aesMinEncrypt(word){
+			            // var _word = CryptoJS.enc.Utf8.parse(word),
+			            //     _key = CryptoJS.enc.Utf8.parse("nansongTodoKey"),
+			            //     _iv = CryptoJS.enc.Utf8.parse("nansongTodo_Iv");
+			            // var encrypted = CryptoJS.AES.encrypt(_word, _key, {
+			            //             iv: _iv,
+			            //             mode: CryptoJS.mode.CBC,
+			            //             padding: CryptoJS.pad.Pkcs7
+			            //     });
+			            // return encrypted.toString();
+						let srcs = CryptoJS.enc.Utf8.parse(word);
+						var  _key = CryptoJS.enc.Utf8.parse("nansongqiTodoKey"),
+						     _iv = CryptoJS.enc.Utf8.parse("nansongqiTodo_Iv");
+						var encrypted = CryptoJS.AES.encrypt(srcs, _key, {iv: _iv,mode: CryptoJS.mode.CBC,padding: CryptoJS.pad.Pkcs7});
+						return CryptoJS.enc.Base64.stringify(encrypted.ciphertext);
+			        }
+					console.log(CryptoJS.pad)
+					//加密方法
+					function Encrypt(word) {
+					    let srcs = CryptoJS.enc.Utf8.parse(word);
+						var  _key = CryptoJS.enc.Utf8.parse("nansongTodoKey"),
+						     _iv = CryptoJS.enc.Utf8.parse("nansongTodo_Iv");
+					    var encrypted = CryptoJS.AES.encrypt(srcs, _key, {iv: _iv,mode: CryptoJS.mode.CBC,padding: CryptoJS.pad.Pkcs7});
+					    return CryptoJS.enc.Base64.stringify(encrypted.ciphertext);
+					}
+					// ————————————————
+					// 版权声明：本文为CSDN博主「張_炕头」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+					// 原文链接：https://blog.csdn.net/z_demon801/article/details/86510120
+					/**
+					 * 解密（需要先加载aes.min.js文件）
+					 * @param word
+					 * @returns {*}
+					 */
+					function aesDecrypt(word) {
+					    var _key = CryptoJS.enc.Utf8.parse("nansongTodoKey"),
+					        _iv = CryptoJS.enc.Utf8.parse("nansongTodo_Iv");
+					    var decrypted = CryptoJS.AES.decrypt(word, _key, {
+					                iv: _iv,
+					                mode: CryptoJS.mode.CBC,
+					                padding: CryptoJS.pad.Pkcs7
+					        });
+					    return decrypted.toString(CryptoJS.enc.Utf8);
+					}
+					
+					var kaptcha = document.getElementById("kaptcha")
+					kaptcha.addEventListener('tap',function(e){
+						
+						$("#kaptcha").attr('src', '/api/kaptcha?' + Math.floor(Math.random() * 100)).fadeIn();
+						
+					});
+		</script>
+		
+	</body>
+
+</html>

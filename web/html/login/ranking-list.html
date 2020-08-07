@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+   <title>Document</title>
+    <link href="css/style.css" rel='stylesheet' type='text/css' media="all" />
+</head>
+<body>
+    <div class="rank-warp">
+		<img id="pausebtn" src="../images/game/pause.png" />
+        <h4 id="tips">排行榜</h4>
+        <div class="box-warap" >
+        <div class="content-box">
+            <!-- <div class="content-list">
+               <div class="top-num">
+                <img src="./images/top-three.png" width="53">
+                <label style="margin-top:8px;color: #fff;">1</label>
+               
+               </div>
+               <div class="sub-list">
+                  <P>独孤求败</P>
+                  <div>
+                    <img src="./images/star.png">
+                    11
+                  </div>
+                
+               </div>
+            </div>
+            <div class="content-list">
+                <div class="top-num">
+                    <img src="./images/top-three.png" width="53">
+                    <label style="margin-top: 8px;color: #fff;">2</label>
+                </div>
+                <div class="sub-list">
+                   <P>独孤求败</P>
+                   <img src="./images/star.png">
+                </div>
+             </div>
+              <div class="content-list">
+               <div class="top-num">
+                <img src="./images/top-three.png" width="53">
+                <label style="margin-top: 8px;color: #fff;">3</label>
+               </div>
+               <div class="sub-list">
+                  <P>独孤求败</P>
+                  <img src="./images/star.png">
+               </div>
+            </div>
+            <div class="content-list">
+                <div class="top-num">
+                    <img src="./images/number.png">
+                    <label>5</label>
+                </div>
+                <div class="sub-list">
+                   <P>独孤求败</P>
+                   <img src="./images/star.png">
+                </div>
+             </div>
+             <div class="content-list">
+                <div class="top-num">
+                    <img src="./images/number.png">
+                    <label>5</label>
+                </div>
+                <div class="sub-list">
+                   <P>独孤求败</P>
+                   <img src="./images/star.png">
+                </div>
+             </div>
+             <div class="content-list">
+                <div class="top-num">
+                    <img src="./images/number.png">
+                    <label>5</label>
+                </div>
+                <div class="sub-list">
+                   <P>独孤求败</P>
+                   <img src="./images/star.png">
+                </div>
+             </div>
+             <div class="content-list">
+                <div class="top-num">
+                    <img src="./images/number.png">
+                    <label>5</label>
+                </div>
+                <div class="sub-list">
+                   <P>独孤求败</P>
+                   <img src="./images/star.png">
+                </div>
+             </div>
+             <div class="content-list">
+                <div class="top-num">
+                    <img src="./images/number.png">
+                    <label>5</label>
+                </div>
+                <div class="sub-list">
+                   <P>独孤求败</P>
+                   <img src="./images/star.png">
+                </div>
+             </div>
+             <div class="content-list">
+                <div class="top-num">
+                    <img src="./images/number.png">
+                    <label>5</label>
+                </div>
+                <div class="sub-list">
+                   <P>独孤求败</P>
+                   <img src="./images/star.png">
+                </div>
+             </div>
+             <div class="content-list">
+                <div class="top-num">
+                    <img src="./images/number.png">
+                    <label>5</label>
+                </div>
+                <div class="sub-list">
+                   <P>独孤求败</P>
+                   <img src="./images/star.png">
+                </div>
+             </div>
+             <div class="content-list">
+                <div class="top-num">
+                    <img src="./images/number.png">
+                    <label>5</label>
+                </div>
+                <div class="sub-list">
+                   <P>独孤求败</P>
+                   <img src="./images/star.png">
+                </div>
+             </div> -->
+        </div>
+
+    </div>
+    </div>
+	<script src="../js/mui.js"></script>
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/layer.js"></script>
+	<script src="../js/path.js"></script>
+	<script>
+		var NAV_IS_PHONE=true;//默认手机端
+		if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
+		   //alert('手机端');
+		   NAV_IS_PHONE=true;
+		}else{
+		   //alert('PC端')
+		   NAV_IS_PHONE=false;
+		   // location.href="../pc.html"
+		}
+		//返回
+		document.getElementById("pausebtn").addEventListener('tap',function(){
+							// console.log("返回");
+						//	history.go(-1);
+							
+							mui.back()
+							
+		})
+		if(localStorage.isEngish=="true"){
+			//英文
+			$("#tips").html("Ranking List ");
+		}else{
+			
+			
+		}
+		
+		
+		selectAllScore();
+		
+		/**创建当前关卡的信息**/
+		function selectAllScore(){
+			
+			$humanAjax(JS_PATH+'/score/selectAllScore',{
+							data:{
+							
+							},
+							crossDomain :true,
+							dataType:'json',//服务器返回json格式数据
+							type:'post',//HTTP请求类型
+							success:function(data){
+							
+								//获得服务器响应
+								console.log(data);
+								if(data.status==200&&data.data){
+									var list = [];
+									for(var i=0,m=data.data.length;i<m;i++){
+										var item = data.data[i];
+										if(!item.totalScore)continue;
+										list.push(item);
+										
+									}
+									list.sort(function(a,b){
+										return parseInt(b.totalScore)-parseInt(a.totalScore)
+									});
+									for(var i=0,m=list.length;i<m;i++){
+										var item = list[i];
+										// if(!item.totalScore)continue;
+										var content = "";
+										var len = item.totalScore;
+										
+										if(NAV_IS_PHONE){
+											if(len>15){
+												
+												len=15
+											}
+										}else{
+											if(len>30){
+												
+												len=30
+											}
+										}
+										
+										
+										for(var j=0;j<len;j++){
+											
+											content+='<img src="./images/star.png">';
+										}
+										if(NAV_IS_PHONE){
+											if(item.totalScore>15){
+												content+='...';
+											}
+											
+											}else{
+												if(item.totalScore>30){
+													content+='...';
+												}
+											}
+										
+										
+										var tt="已通过",ttt="关";
+										
+										if(localStorage.isEngish=="true"){
+											
+											tt="You have passed ";ttt=" level";
+											
+										}
+										
+										
+										
+										$(".content-box").append('<div class="content-list">'
+													+'<div class="top-num">'
+														+'<img src="./images/number.png">'
+														+'<label>'+(i+1)+'</label>'
+													+'</div>'
+													+'<div class="sub-list">'
+													  +' <P>'+item.account+'</P>'
+													  +'<div>'
+													  +content
+													  // +'<img src="./images/star.png">'
+													  // +'<img src="./images/star.png">'
+													   
+													   +tt+item.totalScore+ttt+'</div>'
+													+'</div>'
+													
+												 +'</div>');
+									}
+									
+								}else{
+									//不存在就创建
+									
+									
+								}
+							
+								
+							},error:function(e){
+								
+								console.log(e.responseJSON);
+							
+								
+							}
+						}
+						,null
+						,false
+						," "
+						);
+			
+			
+		}
+		
+		
+		
+		
+		
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+select
+		
+    sum(case when scope='1分钟以下' then 1 else 0 end) as 1分钟以下,
+    sum(case when scope='1分钟至5分钟' then 1 else 0 end) as 1分钟至5分钟,
+    sum(case when scope='6分钟至30分钟' then 1 else 0 end) as 6分钟至30分钟,
+    sum(case when scope='30分钟以上' then 1 else 0 end) as 30分钟以上
+    from
+    (
+    SELECT
+DATE_FORMAT(con.update_time,'%Y-%m-%d') as day,
+    con.howlong,
+    CASE
+    WHEN con.howlong < 60 THEN
+    '1分钟以下'
+    WHEN con.howlong BETWEEN 60
+    AND 300 THEN
+    '1分钟至5分钟'
+    WHEN con.howlong BETWEEN 301
+    AND 1800 THEN
+    '6分钟至30分钟'
+    ELSE
+    '30分钟以上'
+    END AS scope
+    FROM
+    nanfang_score con
+    WHERE
+    con.`level` !=0
+     GROUP BY day
+    )
+    t1 
